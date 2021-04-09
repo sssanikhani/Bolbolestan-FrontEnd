@@ -89,14 +89,14 @@
     border-radius: 5px;
   }
 
-  table {
+  .chosenCourses table {
     direction: rtl;
     margin: auto;
     width: 80%;
     border: 1px solid black;
     border-collapse: collapse;
   }
-  th, td {
+  .chosenCourses th, td {
     border: 1px solid black;
     border-collapse: collapse;
     text-align: center;
@@ -256,6 +256,46 @@
     border-color: #1FA5FF;
   } 
 
+  .courses table {
+    direction: rtl;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+
+  }
+
+  .courses th {
+    color: #1A4C89;
+  }
+
+  .type {
+    color: white ;
+    font-size: large;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    width: 100px;
+    height: 35px;
+  }
+
+  .omomi{
+    border-color: #EDBB41;
+    background-color: #EDBB41;
+  }
+  .asli {
+    border-color: #06D6A0;
+    background-color: #06D6A0;
+  }
+  .paye {
+    border-color: #FF595E;
+    background-color: #FF595E;
+  }
+  .takh {
+    border-color: #1FA5FF;
+    background-color: #1FA5FF;
+  }
 
   </style>
 </head>
@@ -347,44 +387,222 @@
 <div class="courses">
   <fieldset>
     <legend >دروس ارائه شده </legend>
-
-    <div class="choseFilter">
-      <button class="all">همه</button>
-      <button >اختصاصی</button>
-      <button >اصلی</button>
-      <button >پایه</button>
-      <button >عمومی</button>
-    </div>
+        <td>
+        <div class="choseFilter">
+          <button class="all">همه</button>
+          <button >اختصاصی</button>
+          <button >اصلی</button>
+          <button >پایه</button>
+          <button >عمومی</button>
+        </div>
     <hr style="color: #0087E0;">
-    <div>
-      <table>
-        <tr>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </table>
-    </div>
+    <tr>
+      <div>
+        <table>
+          <tr>
+            <th></th>
+            <th>کد</th>
+            <th>ظرفیت</th>
+            <th>نوع</th>
+            <th>نام درس</th>
+            <th>استاد</th>
+            <th>واحد</th>
+            <th>توضیحات</th>
+          </tr>
+          <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type omomi">عمومی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>   
+          <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type omomi">عمومی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  
+          <tr>
+            <td><img src="../SRC/entezar.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type omomi">عمومی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  
+          <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type omomi">عمومی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  
 
-    <hr style="color: #0087E0;">
+          <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type asli">اصلی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type asli">اصلی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  
+          <tr>
+            <td><img src="../SRC/entezar.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type asli">اصلی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  
+          <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type asli">اصلی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr> 
+          
+          <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type takh">تخصصی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type takh">تخصصی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  
+          <tr>
+            <td><img src="../SRC/entezar.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type takh">تخصصی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  
+          <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type takh">تخصصی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  
 
-    <div>
-      <table>
-        
-      </table>
-    </div>
-    <hr style="color: #0087E0;">
-    <div class="detail">
-      <div class="div1-1">
-        <p>تعداد واحد های ثبت شده: 15</p>
+          <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type paye">پایه</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type paye">پایه</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  
+          <tr>
+            <td><img src="../SRC/entezar.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type paye">پایه</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  
+          <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type paye">پایه</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr> 
+        </table>
       </div>
-      <div class="div1-2">
-        <button class="submit">ثبت نهایی</button>
-        <img src="../SRC/reset.png" class="reset-icon">
-      </div>
-    </div>
    </fieldset>
 </div>
 </body>
