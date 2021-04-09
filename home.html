@@ -230,7 +230,9 @@
     .copyright * {
         float: right;
     }
-
+    .copyright p {
+        color: white;
+    }
     .links {
         align-items: center;
         margin: auto;
@@ -241,14 +243,64 @@
     .links * {
         float: left;
     }
-    .copyright p {
-        color: white;
+
+
+    .logo {
+        width: 40px;
+        height: 40px;
     }
+    .header1 {
+        margin: auto;
+        width: 100%;
+        background-color: white;
+        align-items: center;
+        display: flex;
+        margin: auto;
+        border-bottom:2px solid #1A4C89;
+        position: fixed;
+        top: 0;
+    }
+    .rightlinks {
+        align-items: center;
+        display: inline-flex;
+        margin: auto;
+        width: 50%;
+        margin-right: 5%;
+        color: #0087E0;
+    }
+
+    .rightlinks * {
+        margin-left: 5%;
+    }
+
+    .exit {
+        align-items: center;
+        display: inline-flex;
+        margin: auto;
+        margin-left: 5%;
+        color: red;
+    }
+    .exit * {
+        float: left;
+        margin-left: 5%;
+    }
+   
 
 </style>
     
 <body dir="rtl">
-    <br><br><br>
+    <div class="header1">
+        <div class="rightlinks">
+            <img src="../SRC/logo.png" class="logo">
+            <p>انتخاب واحد</p>
+            <p>برنامه هفتگی</p>
+        </div>
+        <div class="exit" >
+            <p>خروج</p>
+            <img src="../SRC/exit.png" class="icon">   
+        </div>
+    </div>
+
     <!-- <div class="slider">
         <div class="container">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -485,7 +537,6 @@
             <img src="../SRC/linkden.png" class="icon">
             <img src="../SRC/instagram.png" class="icon">
             <img src="../SRC/twitter.png" class="icon">
-
         </div>
     </div>
 
