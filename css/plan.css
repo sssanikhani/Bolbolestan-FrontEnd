@@ -1,0 +1,23 @@
+body > div > main * {
+    text-align: center;
+}
+
+body > div > main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-left: 8%;
+    padding-right: 8%;
+    height: 100%;
+}
+
+.plan-table {
+    border: 2px solid #1a4c89;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.plan-table tr > * {
+    border: 1px solid #1a4c89;
+}
