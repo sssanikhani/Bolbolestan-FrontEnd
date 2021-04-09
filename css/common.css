@@ -1,0 +1,30 @@
+* {
+    font-family: Vazir;
+}
+
+body > div > header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #1A4C89CC;
+    color: white;
+    height: 7%;
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
+body > div > footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #1A4C89CC;
+    color: white;
+    width: 100%;
+    height: 7%;
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
+body > div > main {
+    margin-top: 3em;
+}
