@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    @font-face {
+      font-family: Vazir;
+      src: url('Vazir.eot');
+      src: url('Vazir.eot?#iefix') format('embedded-opentype'),
+           url('Vazir.woff2') format('woff2'),
+           url('Vazir.woff') format('woff'),
+           url('Vazir.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+  }
+  @font-face {
+      font-family: Vazir;
+      src: url('Vazir-Bold.eot');
+      src: url('Vazir-Bold.eot?#iefix') format('embedded-opentype'),
+           url('Vazir-Bold.woff2') format('woff2'),
+           url('Vazir-Bold.woff') format('woff'),
+           url('Vazir-Bold.ttf') format('truetype');
+      font-weight: bold;
+      font-style: normal;
+  }
+  @font-face {
+      font-family: Vazir;
+      src: url('Vazir-Black.eot');
+      src: url('Vazir-Black.eot?#iefix') format('embedded-opentype'),
+           url('Vazir-Black.woff2') format('woff2'),
+           url('Vazir-Black.woff') format('woff'),
+           url('Vazir-Black.ttf') format('truetype');
+      font-weight: 900;
+      font-style: normal;
+  }
+  @font-face {
+      font-family: Vazir;
+      src: url('Vazir-Medium.eot');
+      src: url('Vazir-Medium.eot?#iefix') format('embedded-opentype'),
+           url('Vazir-Medium.woff2') format('woff2'),
+           url('Vazir-Medium.woff') format('woff'),
+           url('Vazir-Medium.ttf') format('truetype');
+      font-weight: 500;
+      font-style: normal;
+  }
+  @font-face {
+      font-family: Vazir;
+      src: url('Vazir-Light.eot');
+      src: url('Vazir-Light.eot?#iefix') format('embedded-opentype'),
+           url('Vazir-Light.woff2') format('woff2'),
+           url('Vazir-Light.woff') format('woff'),
+           url('Vazir-Light.ttf') format('truetype');
+      font-weight: 300;
+      font-style: normal;
+  }
+  @font-face {
+      font-family: Vazir;
+      src: url('Vazir-Thin.eot');
+      src: url('Vazir-Thin.eot?#iefix') format('embedded-opentype'),
+           url('Vazir-Thin.woff2') format('woff2'),
+           url('Vazir-Thin.woff') format('woff'),
+           url('Vazir-Thin.ttf') format('truetype');
+      font-weight: 100;
+      font-style: normal;
+  }
+
+  * {
+    font-family: Vazir;
+    font-weight: bold;
+    font-size: large;
+
+  }
+  .chosenCourses {
+    margin: auto; 
+    width: 80%;
+  }
+
+  legend {
+    background-color: #0087E0; 
+    padding: 5px; 
+    color: white; 
+    border-radius: 5px;
+    font-size: large;
+    font-weight: bold;
+  }
+  .chosenCourses fieldset {
+    border: 2px solid #0087E0; 
+    border-radius: 5px;
+  }
+
+  .chosenCourses table {
+    direction: rtl;
+    margin: auto;
+    width: 80%;
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  .chosenCourses th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+  }
+
+
+
+  .detail {
+    align-items: center;
+    justify-content:space-between ;
+    display: flex;
+  }
+  .div1-1 {
+    float: right;
+    font-weight: bold; 
+    color: #1A4C89;
+    margin-right: 5%;
+    display: inline;
+  }
+  .div1-2 {
+    float: left;
+    margin-left: 5%;
+    font-weight: bold;
+    align-items: center;
+    display: inline;
+  }
+
+  .submit {
+    border-radius: 5px;
+    background-color: #06D6A0;
+    width: 150px;
+    height: 40px;
+    padding-left: 10%;
+    padding-right: 10%; 
+    color: white; 
+    font-size: large;
+  }
+  
+  .reset-icon {
+    width: 40px;
+    height: 40px;
+    float: right;
+  }
+
+
+  .sabt {
+    border-radius: 5px;
+    border-color: #66ad77;
+    background-color: white;
+    color: #66ad77 ;
+    font-size: large;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 20px;
+    padding-right: 20px;
+  } 
+
+  .sabt-nashde {
+    border-radius: 5px;
+    border-color: #1FA5FF;
+    background-color: white;
+    color: #1FA5FF;
+    font-size: large;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 20px;
+    padding-right: 20px;
+  } 
+
+  .entezar {
+    border-radius: 5px;
+    border-color: #3f4041;
+    background-color: white;
+    color: #3f4041;
+    font-size: large;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 20px;
+    padding-right: 20px;
+  } 
+
+  .icon {
+    width: 40px;
+    height: 40px;
+  }
+
+
+
+  .search {
+    margin: auto; 
+    width: 40%;
+    justify-content: center;
+    display: flex;
+  }
+
+  .search fieldset {
+    border-radius: 5px;
+    margin: auto;
+    justify-content: center;
+    display: flex;
+  }
+
+  .search-input {
+    width: 300px;
+    height: 35px;
+    border-radius: 5px;
+    margin-left: 10px;
+    text-align: center;
+  }
+
+  .search-bottom {
+    border-radius: 5px;
+    background-color: #06D6A0;
+    width: 150px;
+    height: 40px;
+    padding-left: 10%;
+    padding-right: 10%; 
+    color: white; 
+    font-size: large;
+  }
+
+  .courses {
+    margin: auto; 
+    width: 80%;
+  }
+
+  .courses fieldset {
+    border: 2px solid #0087E0; 
+    border-radius: 5px;
+    margin: auto;
+  }
+
+  .choseFilter {
+    justify-content: center;
+    display: flex;
+    margin: auto;
+  }
+
+  .choseFilter * {
+    border: 2px solid gray;
+    border-radius: 10px;
+    background-color: white;
+    color: gray;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    text-align: center;
+
+  }
+
+  .choseFilter .all {
+    background-color: #1FA5FF;
+    border-color: #1FA5FF;
+  } 
+
+  .courses table {
+    direction: rtl;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+
+  }
+
+  .courses th {
+    color: #1A4C89;
+  }
+
+  .type {
+    color: white ;
+    font-size: large;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    width: 100px;
+    height: 35px;
+  }
+
+  .omomi{
+    border-color: #EDBB41;
+    background-color: #EDBB41;
+  }
+  .asli {
+    border-color: #06D6A0;
+    background-color: #06D6A0;
+  }
+  .paye {
+    border-color: #FF595E;
+    background-color: #FF595E;
+  }
+  .takh {
+    border-color: #1FA5FF;
+    background-color: #1FA5FF;
+  }
+
+  </style>
+</head>
+
+<body dir="rtl">
+
+
+<br><br><br><br>
+<div class="chosenCourses">
+      <fieldset>
+        <legend >دروس انتخاب شده </legend>
+        <div>
+          <table>
+            <tr>
+              <th></th>
+              <th>وضعیت</th> 
+              <th>کد</th>
+              <th>نام درس</th>
+              <th>استاد</th>
+              <th>واحد</th>
+            </tr>
+            <tr>
+              <td><img src="../SRC/del.png" class="icon"></td>
+              <td>
+                <button class="sabt">ثبت شده</button> 
+              </td>
+              <td>8101864-01</td>
+              <td>پایگاه داده ها</td>
+              <td>آزاده شاکری</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td><img src="../SRC/del.png" class="icon"></td>
+              <td>
+                <button class="sabt">ثبت شده</button> 
+              </td>
+              <td>8101864-01</td>
+              <td>اندیشه اسلامی 1</td>
+              <td>محمد تنها</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td><img src="../SRC/del.png" class="icon"></td>
+              <td>
+                <button class="sabt-nashde">ثبت نهایی شده</button> 
+              </td>
+              <td>8101864-01</td>
+              <td>مهندسی نرم افزار</td>
+              <td>رامتین خسروی</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td><img src="../SRC/del.png" class="icon"></td>
+              <td>
+                <button class="entezar">در انتظار</button> 
+              </td>
+              <td>8101864-01</td>
+              <td>نظریه زبان ها و ماشین ها</td>
+              <td>حسین حجت</td>
+              <td>3</td>
+            </tr>
+          </table>
+        </div>
+        <hr style="color: #0087E0;">
+        <div class="detail">
+          <div class="div1-1">
+            <p>تعداد واحد های ثبت شده: 15</p>
+          </div>
+          <div class="div1-2">
+            <button class="submit">ثبت نهایی</button>
+            <img src="../SRC/reset.png" class="reset-icon">
+          </div>
+        </div>
+       </fieldset>
+
+</div >
+<br><br><br>
+
+
+<div class="search">
+  <fieldset>
+      <input class="search-input" placeholder="نام درس">
+      <button class="search-bottom">جستجو</button>
+   </fieldset>
+</div>
+
+
+<br><br><br>
+<div class="courses">
+  <fieldset>
+    <legend >دروس ارائه شده </legend>
+        <td>
+        <div class="choseFilter">
+          <button class="all">همه</button>
+          <button >اختصاصی</button>
+          <button >اصلی</button>
+          <button >پایه</button>
+          <button >عمومی</button>
+        </div>
+    <hr style="color: #0087E0;">
+    <tr>
+      <div>
+        <table>
+          <tr>
+            <th></th>
+            <th>کد</th>
+            <th>ظرفیت</th>
+            <th>نوع</th>
+            <th>نام درس</th>
+            <th>استاد</th>
+            <th>واحد</th>
+            <th>توضیحات</th>
+          </tr>
+          <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type omomi">عمومی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>   
+          <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type omomi">عمومی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  
+          <tr>
+            <td><img src="../SRC/entezar.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type omomi">عمومی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  
+          <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type omomi">عمومی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  
+
+          <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type asli">اصلی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type asli">اصلی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  
+          <tr>
+            <td><img src="../SRC/entezar.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type asli">اصلی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  
+          <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type asli">اصلی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr> 
+          
+          <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type takh">تخصصی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type takh">تخصصی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  
+          <tr>
+            <td><img src="../SRC/entezar.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type takh">تخصصی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  
+          <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type takh">تخصصی</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  
+
+          <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type paye">پایه</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type paye">پایه</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  
+          <tr>
+            <td><img src="../SRC/entezar.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type paye">پایه</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr>  
+          <tr>
+            <td><img src="../SRC/add.png" class="icon"></td>
+            <td>1120001-01</td>
+            <td>26/50</td>
+            <td>
+              <button class="type paye">پایه</button>
+            </td>
+            <td>اندیشه اسلامی 1</td>
+            <td>محمد تنها</td>
+            <td>2</td>
+            <td>cascdddddddddddddddd</td>
+          </tr> 
+        </table>
+      </div>
+   </fieldset>
+</div>
+</body>
+</html>
