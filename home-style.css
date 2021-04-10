@@ -8,61 +8,18 @@
     width: 30%;
 }
 
-.logo {
-    width: 40px;
-    height: 40px;
-  }
-
 .profile-pic {
     border-radius: 50%;
     margin: auto;
     width: 200px;
     height: 200px;
 }
-
-.icon {
-    width: 40px;
-    height: 40px;
-  }
-
   
   .cover {
     margin: auto;
     width: 100%;
     max-height: 700px;
 }
-
-            /* HEADER */
-
-  .header {
-    margin: auto;
-    width: 100%;
-    background-color: white;
-    align-items: center;
-    display: flex;
-    margin: auto;
-    border-bottom:2px solid #1A4C89;
-    position: fixed;
-    top: 0;
-  }
-  .header * {
-    margin-left: 5%;
-  }
-  .header-rightlinks {
-    align-items: center;
-    display: inline-flex;
-    margin: auto;
-    width: 50%;
-    margin-right: 5%;
-    color: #0087E0;
-  }
-  .header-exit {
-    align-items: center;
-    display: inline-flex;
-    margin: auto;
-    margin-left: 5%;
-    color: red;
-  }
             /* INFORMATION */
 
 .information {
@@ -190,33 +147,3 @@
     background-color: rgb(255, 246, 246);
     border: 2px solid gray;
 }
-
-                                                        /* FOOTER */
-.footer {
-    margin: auto;
-    width: 100%;
-    background-color: #1A4C89;
-    align-items: center;
-    display: flex;
-}
-.copyright {
-    align-items: center;
-    display: flex;
-    float: right;
-    margin: auto;
-    width: 50%;
-    margin-right: 5%;
-    color: white;
-}
-
-.footer-links {
-    align-items: center;
-    margin: auto;
-    width: 50%;
-    margin-left: 5%;
-}
-
-.footer-links * {
-    float: left;
-}
-                                                        

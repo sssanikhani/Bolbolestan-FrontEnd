@@ -1,7 +1,7 @@
-* {
-    font-family: Vazir;
-    font-size:medium;
-  }
+    * {
+      font-family: Vazir;
+      font-size:medium;
+    }
 body {
     background-image: url("../SRC/cover\ photo.jpg");
     background-repeat: no-repeat;

@@ -5,41 +5,6 @@
     font-family: Vazir;
     font-size:medium;
   }
-
-                                                        /* HEADER */
-.logo {
-    width: 40px;
-    height: 40px;
-  }
-  .header {
-    margin: auto;
-    width: 100%;
-    background-color: white;
-    align-items: center;
-    display: flex;
-    margin: auto;
-    border-bottom:2px solid #1A4C89;
-    position: fixed;
-    top: 0;
-  }
-  .header * {
-    margin-left: 5%;
-  }
-  .header-rightlinks {
-    align-items: center;
-    display: inline-flex;
-    margin: auto;
-    width: 50%;
-    margin-right: 5%;
-    color: #0087E0;
-  }
-  .header-exit {
-    align-items: center;
-    display: inline-flex;
-    margin: auto;
-    margin-left: 5%;
-    color: red;
-  }
                                                         /* LEGEND */
   legend {
     background-color: #0087E0; 
@@ -105,6 +70,10 @@
     align-items: center;
     display: inline;
     }
+
+.chosenCourse-bottom-left-div * {
+    float: left;
+    }
     
 .green-button{
     border-radius: 5px;
@@ -116,14 +85,20 @@
     padding-right: 10%; 
     color: white; 
     font-size: large;
+    text-align: center;
+    justify-content: center;
+    display: flex;
     }
 .icon {
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
     }
 
 .reset {
     float: right;
+    width: 40px;
+    height: 40px;
     }
 .state {
     border-radius: 5px;
@@ -133,6 +108,8 @@
     padding-left: 20px;
     padding-right: 20px;
     width: 80%;
+    margin-top: 5px;
+    margin-bottom: 5px;
     }
 .submited {
     border-color: #66ad77;
@@ -243,6 +220,8 @@
     padding-right: 20px;
     border-radius: 10px;
     width: 90%;
+    margin-top: 5px;
+    margin-bottom: 5px;
     text-align: center;
   }
 
@@ -263,31 +242,3 @@
     background-color: #1FA5FF;
   }
 
-                                                        /* FOOTER */
-.footer {
-    margin: auto;
-    width: 100%;
-    background-color: #1A4C89;
-    align-items: center;
-    display: flex;
-}
-.copyright {
-    align-items: center;
-    display: flex;
-    float: right;
-    margin: auto;
-    width: 50%;
-    margin-right: 5%;
-    color: white;
-}
-
-.footer-links {
-    align-items: center;
-    margin: auto;
-    width: 50%;
-    margin-left: 5%;
-}
-
-.footer-links * {
-    float: left;
-}
