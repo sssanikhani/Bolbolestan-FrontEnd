@@ -16,6 +16,10 @@ body > div > main * {
     text-align: center;
 }
 
+.plan-container {
+    width: 100%;
+}
+
 .plan-table {
     width: 100%;
     height: 60vh;
