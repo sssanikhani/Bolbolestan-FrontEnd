@@ -17,6 +17,7 @@ body > div > main * {
 }
 
 .plan-container {
+    position: relative;
     background: white;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -24,15 +25,26 @@ body > div > main * {
     width: 100%;
 }
 
-.plan-table {
+.plan-table, .pure-plan-table {
+    height: 69vh;
     width: 100%;
-    height: 60vh;
+}
+
+.plan-table tr > *, .pure-plan-table tr > * {
+    height: 7%;
+    width: 14%;
+}
+
+.plan-table tr > *:first-child, .pure-plan-table tr > *:first-child {
+    width: fit-content;
+}
+
+.plan-table {
     border-collapse: collapse;
 }
 
 .plan-table tr > * {
-    border: 1px solid #1a4c89;
-    width: 14%
+    border: 1px solid #1a4c8933;
 }
 
 .plan-table tr:last-child > * {
@@ -51,4 +63,81 @@ body > div > main * {
     border-left: 0;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+}
+
+.pure-plan-table {
+    border-collapse: collapse;
+    position: absolute;
+    top: 0;
+}
+
+.pure-plan-table tr > * {
+    border: 1px solid #1a4c8900;
+}
+
+.dummy {
+    color: #00000000;
+    background: #00000000;
+}
+
+.pure-plan-cell {
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+}
+
+.course-plan {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: inset -2px 0px 5px #000000;
+    
+    position: absolute;
+    padding: 5%;
+    width: 95%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.course-plan > * {
+    margin-right: 3px;
+}
+
+.ekhtesasi {
+    background: #0087e055;
+}
+
+.asli {
+    background: #ff595e55;
+}
+
+.omoomi {
+    background: #edbb4155;
+}
+
+.paye {
+    background: #28a74555;
+}
+
+.start-half {
+    top: 52%;
+}
+
+.start-zero {
+    top: 4%;
+}
+
+.len-0130 {
+    height: 150%;
+}
+
+.len-0200 {
+    height: 200%;
+}
+
+.len-0300 {
+    height: 300%;
 }
