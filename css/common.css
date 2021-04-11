@@ -15,9 +15,9 @@ body {
 html > body > div.container-fluid {
     margin: 0;
     width: 100%;
-    min-height: 100vh;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
+    min-height: 86vh;
+    padding-top: 7vh;
+    padding-bottom: 7vh;
     padding-right: 0;
     padding-left: 0; 
 }
@@ -27,7 +27,7 @@ body > div > header, body > div > footer {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 5vh;
+    height: 7vh;
     padding-right: 2%;
     padding-left: 2%;
 }
@@ -39,6 +39,53 @@ body > div > header {
 }
 
 body > div > footer {
-    background: #1A4C89CC;
+    background: #1A4C89;
     color: white;
+}
+
+.rightside {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 50%;
+}
+
+.rightside>* {
+    margin: 5%;
+}
+
+footer>.rightside * {
+    margin: 0;
+}
+
+.leftside {
+    display: flex;
+    align-items: center;
+}
+
+header > .leftside {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: red;
+}
+
+header > .leftside > * {
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+footer>.leftside {
+    justify-content: space-between;
+    width:20%;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
 }
