@@ -3,7 +3,7 @@
       font-size:medium;
     }
 body {
-    background-image: url("../SRC/cover\ photo.jpg");
+    background-image: url("../static/SRC/cover\ photo.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
