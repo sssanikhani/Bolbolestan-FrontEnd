@@ -23,6 +23,7 @@ body > div > main * {
     border-top-right-radius: 10px;
     border: 2px solid #1a4c89;
     width: 100%;
+    height: fit-content;
 }
 
 .plan-table, .pure-plan-table {
