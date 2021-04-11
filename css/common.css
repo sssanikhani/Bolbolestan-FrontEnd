@@ -50,29 +50,28 @@ body > div > footer {
     width: 50%;
 }
 
-.rightside>* {
-    margin: 5%;
-}
-
-footer>.rightside * {
-    margin: 0;
-}
-
 .leftside {
     display: flex;
     align-items: center;
 }
 
+header>.rightside>* {
+    margin: 5%;
+}
+
+
 header > .leftside {
-    display: flex;
     justify-content: space-around;
-    align-items: center;
     color: red;
 }
 
 header > .leftside > * {
     margin-right: 5%;
     margin-left: 5%;
+}
+
+footer>.rightside * {
+    margin: 0;
 }
 
 footer>.leftside {
