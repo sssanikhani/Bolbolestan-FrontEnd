@@ -5,6 +5,8 @@ import React from 'react';
 import axios from 'axios';
 import Header from './Header';
 import Spinner from './Spinner';
+import $ from 'jquery';
+
 
 class App extends React.Component {
 
@@ -20,7 +22,7 @@ class App extends React.Component {
       axios.get('http://localhost:8080/student')
         .then(
           (response) => {
-            console.log(response.status);
+            this.setState({loading: false});
           }
         )
         .catch(
@@ -40,6 +42,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    $('body').attr('dir', 'rtl');
     this.setState({ loading: true });
     this.redirectIfNotSignedIn();
   }
