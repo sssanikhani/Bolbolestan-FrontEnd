@@ -2,7 +2,7 @@
     background: #f0f0ff;
 } */
 
-body > div > main {
+#root > div > main {
     font-size: smaller;
     display: flex;
     justify-content: center;
@@ -12,7 +12,7 @@ body > div > main {
     padding: 4%;
 }
 
-body > div > main * {
+#root > div > main * {
     text-align: center;
 }
 
