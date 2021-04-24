@@ -4,8 +4,23 @@ import './common.css';
 import React from 'react';
 import logo from './static/SRC/logo.png';
 import logoutLogo from './static/SRC/001-log-out.png'
+import axios from 'axios';
 
 class Header extends React.Component {
+
+  logout() {
+    axios({
+      method: 'POST',
+      url: 'http://localhost:8080/auth/logout',
+      data:{}
+    })
+      .then(res => {
+        window.location.href = '/login';
+      })
+      .catch(err => {
+        window.location.href = '/login';
+      })
+  }
 
   render() {
     const page = this.props.page;
@@ -41,10 +56,10 @@ class Header extends React.Component {
           <img className="logo" src={logo} />
           {links}
         </div>
-        <div className="leftside">
+        <button className="leftside logout-button" onClick={this.logout.bind(this)}>
           <span>خروج</span>
           <img src={logoutLogo} className="icon" />
-        </div>
+        </button>
       </header>
     );
   }
