@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import '../css/login-style.css';
+import './login-style.css';
 import checkLogin from '../checkLogin';
 import Spinner from '../Spinner';
 
@@ -80,9 +80,9 @@ class Login extends Component {
               <legend className="login-legend">ورود به سامانه ی بلبلستان</legend><br/>
               {falseUserPass}
               <label for="std-id">نام کاربری(شماره دانشجویی)</label><br /><br />
-              <input onChange={this.handleChange.bind(this)} className="login-input" type="text" id="std-id" name="stdid" /><br /><br />
+              <input dir="ltr" onChange={this.handleChange.bind(this)} className="login-input" type="text" id="std-id" name="stdid" /><br /><br />
               <label for="pass">گذرواژه</label><br /><br />
-              <input onChange={this.handleChange.bind(this)} className="login-input" type="text" id="pass" name="pass" /><br /><br />
+              <input dir="ltr" onChange={this.handleChange.bind(this)} className="login-input" type="text" id="pass" name="pass" /><br /><br />
               <input className="login-button" type="submit" value="ورود" /><br /><br />
             </form>
           </fieldset>
