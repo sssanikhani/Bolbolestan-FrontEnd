@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from './Header';
 
 class NotFound extends React.Component {
 
@@ -9,6 +10,7 @@ class NotFound extends React.Component {
     render() {
         return (
             <React.Fragment>
+                <Header page="plan" />
                 <h1>۴۰۴</h1>
                 <h2>یافت نشد</h2>
             </React.Fragment>
