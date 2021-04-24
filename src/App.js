@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './Header';
 import NotFound from './NotFound';
 import Plan from './plan/Plan';
+import Login from './login/Login';
 import $ from 'jquery';
+import './normalize.css';
 import './common.css';
 import './static/Fonts/vazir-fonts/fonts.css';
 
@@ -27,8 +29,7 @@ class App extends React.Component {
             <Header page="home" />
             <div>home</div>
           </Route>
-          <Route exact path="/login">
-          </Route>
+          <Route exact path="/login" component={Login} />
           <Route exact path="/courses">
             <Header page="courses" />
             <div>courses</div>
