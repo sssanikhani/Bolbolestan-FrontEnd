@@ -69,7 +69,7 @@ class Plan extends React.Component {
             .catch(
                 err => {
                     if (err.status === 401)
-                        window.location.href = '/login';
+                        this.props.history.push("/login");
                 }
             )
 
