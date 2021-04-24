@@ -1,56 +1,27 @@
-import './App.css';
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import Plan from './plan/Plan';
-import React from 'react';
-import axios from 'axios';
-import Header from './Header';
-import Spinner from './Spinner';
 import $ from 'jquery';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import './App.css';
+import './common.css';
+import Header from './Header';
+import './normalize.css';
+import NotFound from './NotFound';
+import Plan from './plan/Plan';
+import './static/Fonts/vazir-fonts/fonts.css';
 
 
 class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      loading: true
-    }
-  }
-
-  redirectIfNotSignedIn() {
-    if (window.location.pathname !== '/login') {
-      axios.get('http://localhost:8080/student')
-        .then(
-          (response) => {
-            this.setState({loading: false});
-          }
-        )
-        .catch(
-          (error) => {
-            if (error.response) {
-              let status = error.response.status;
-              if (status === 401) {
-                window.location.href = "/login";
-              }
-            }
-          }
-        );
-    }
-    else {
-      this.setState({ loading: false });
-    }
+    this.routes = ['/login', '/courses', '/plan', '/home'];
   }
 
   componentDidMount() {
     $('body').attr('dir', 'rtl');
-    this.setState({ loading: true });
-    this.redirectIfNotSignedIn();
   }
 
   render() {
-    if (this.state.loading) {
-      return <Spinner />;
-    }
     return (
       <Router>
         <Switch>
@@ -65,8 +36,10 @@ class App extends React.Component {
             <div>courses</div>
           </Route>
           <Route path="/plan">
-            <Header page="plan" />
             <Plan />
+          </Route>
+          <Route>
+            <NotFound />
           </Route>
         </Switch>
       </Router>
