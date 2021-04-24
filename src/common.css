@@ -24,6 +24,19 @@ body h1 {
     position: relative;
 }
 
+#login-page {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    height: auto;
+    width: auto;
+    background: url(static/SRC/cover\ photo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 100vh;
+}
+
 #root {
     margin: 0;
     width: 100%;
@@ -80,6 +93,27 @@ header > .leftside {
     justify-content: space-around;
     color: red;
 }
+
+.logout-button {
+    background-color: white;
+    border-radius: 5px;
+    border: 0;
+}
+
+.logout-button:hover {
+    background-color: pink;
+    color: black;
+}
+
+.logout-button:active {
+    background-color: rosybrown;
+    color: black;
+}
+
+.logout-button>* {
+    background-color: inherit;
+}
+
 
 header > .leftside > * {
     margin-right: 5%;
