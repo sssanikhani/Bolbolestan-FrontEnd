@@ -76,21 +76,27 @@ class Plan extends React.Component {
     }
 
     componentDidMount() {
+        document.title = "برنامه هفتگی";
         this.setState({ loading: true });
         checkLogin()
             .then(
                 res => {
                     if (!res)
-                        window.location.href = '/login';
-
-                    this.getPlan();
+                        this.props.history.push('/login');
+                    else
+                        this.getPlan();
                 }
             );
     }
 
     render() {
         if (this.state.loading)
-            return <Spinner />;
+            return (
+                <React.Fragment>
+                    <Header page="plan" />
+                    <Spinner />
+                </React.Fragment>
+            );
         let purePlanRows = [];
         for (let i = this.startHour; i < this.endHour; i++) {
             purePlanRows.push(<PlanRow time={i} plan={this.state.plan} key={i} />);
