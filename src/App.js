@@ -1,12 +1,10 @@
-import $ from 'jquery';
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import './App.css';
-import './common.css';
 import Header from './Header';
-import './normalize.css';
 import NotFound from './NotFound';
 import Plan from './plan/Plan';
+import $ from 'jquery';
+import './common.css';
 import './static/Fonts/vazir-fonts/fonts.css';
 
 
@@ -25,22 +23,18 @@ class App extends React.Component {
     return (
       <Router>
         <Switch>
-          <Route path="/home">
+          <Route exact path="/">
             <Header page="home" />
             <div>home</div>
           </Route>
-          <Route path="/login">
+          <Route exact path="/login">
           </Route>
-          <Route path="/courses">
+          <Route exact path="/courses">
             <Header page="courses" />
             <div>courses</div>
           </Route>
-          <Route path="/plan">
-            <Plan />
-          </Route>
-          <Route>
-            <NotFound />
-          </Route>
+          <Route exact path="/plan" component={Plan} />
+          <Route component={NotFound} />
         </Switch>
       </Router>
     );
