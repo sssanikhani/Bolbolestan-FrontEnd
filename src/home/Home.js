@@ -2,8 +2,6 @@ import React from 'react';
 import axios from 'axios';
 
 import './home-style.css';
-import '../css/total.css';
-
 import COVER from '../static/SRC/cover photo.jpg'
 import checkLogin from '../common/checkLogin';
 import Header from '../common/Header';
