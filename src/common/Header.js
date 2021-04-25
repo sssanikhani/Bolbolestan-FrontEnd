@@ -28,7 +28,7 @@ class Header extends React.Component {
     if (page === 'plan') {
       links = (
         <React.Fragment>
-          <Link to="/home">خانه</Link>
+          <Link to="/">خانه</Link>
           <Link to="/courses">انتخاب واحد</Link>
         </React.Fragment>
       );
@@ -36,7 +36,7 @@ class Header extends React.Component {
     else if (page === 'courses') {
       links = (
         <React.Fragment>
-          <Link to="/home">خانه</Link>
+          <Link to="/">خانه</Link>
           <Link to="/plan">برنامه هفتگی</Link>
         </React.Fragment>
       );
