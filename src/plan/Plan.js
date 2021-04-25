@@ -1,11 +1,11 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import '../common.css';
+import '../common/common.css';
 import './plan.css';
 import axios from 'axios';
-import Header from '../Header';
-import checkLogin from '../checkLogin';
-import Spinner from '../Spinner';
+import Header from '../common/Header';
+import checkLogin from '../common/checkLogin';
+import Spinner from '../common/Spinner';
 import PlanRow from './PlanRow';
 import TableTemplate from './TableTemplate';
 

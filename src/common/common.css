@@ -30,7 +30,7 @@ body h1 {
     bottom: 0;
     height: auto;
     width: auto;
-    background: url(static/SRC/cover\ photo.jpg);
+    background: url(../static/SRC/cover\ photo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;

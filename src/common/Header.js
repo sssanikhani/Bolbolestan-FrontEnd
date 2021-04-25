@@ -2,8 +2,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Link } from 'react-router-dom';
 import './common.css';
 import React from 'react';
-import logo from './static/SRC/logo.png';
-import logoutLogo from './static/SRC/001-log-out.png'
+import logo from '../static/SRC/logo.png';
+import logoutLogo from '../static/SRC/001-log-out.png'
 import axios from 'axios';
 
 class Header extends React.Component {

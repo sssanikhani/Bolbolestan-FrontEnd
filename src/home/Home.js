@@ -5,9 +5,9 @@ import './home-style.css';
 import '../css/total.css';
 
 import COVER from '../static/SRC/cover photo.jpg'
-import checkLogin from '../checkLogin';
-import Header from '../Header';
-import Spinner from '../Spinner';
+import checkLogin from '../common/checkLogin';
+import Header from '../common/Header';
+import Spinner from '../common/Spinner';
 
 class Home extends React.Component {
     constructor(props) {

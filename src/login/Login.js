@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import 'bootstrap/dist/css/bootstrap.css';
+import checkLogin from '../common/checkLogin';
+import Spinner from '../common/Spinner';
 import './login-style.css';
-import checkLogin from '../checkLogin';
-import Spinner from '../Spinner';
 
 class Login extends Component {
   state = {

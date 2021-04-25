@@ -1,7 +1,7 @@
 import React from 'react';
 import calendarLogo from '../static/SRC/calendar.png';
 import 'bootstrap/dist/css/bootstrap.css';
-import '../common.css';
+import '../common/common.css';
 import './plan.css';
 
 class TableTemplate extends React.Component {
