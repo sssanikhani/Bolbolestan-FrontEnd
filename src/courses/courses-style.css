@@ -14,7 +14,19 @@ legend {
   font-weight: bold;
   padding-left: 2%;
   padding-right: 2%;
-  width: 50%;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+fieldset {
+  border: 2px solid #0087e0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  width: 85%;
 }
 
 /*CHOSENCOURSES*/
@@ -34,7 +46,8 @@ legend {
   border: 1px solid black;
   border-collapse: collapse;
 }
-th {
+
+.chosenCourses th {
   color: #1a4c89;
   font-weight: bold;
   font-size: larger;
@@ -42,7 +55,7 @@ th {
 }
 
 .chosenCourses th,
-td {
+.chosenCourses td {
   border: 1px solid black;
   border-collapse: collapse;
   text-align: center;
@@ -86,6 +99,7 @@ td {
   font-size: large;
   text-align: center;
   justify-content: center;
+  align-items: center;
   display: flex;
 }
 .icon {
@@ -95,10 +109,18 @@ td {
 }
 
 .reset {
-  float: right;
   width: 40px;
   height: 40px;
 }
+
+.reset-button {
+  width: fit-content;
+  height: fit-content;
+  background-color: white;
+  border: 0;
+  padding: 0;
+}
+
 .state {
   border-radius: 5px;
   font-size: large;
@@ -109,21 +131,18 @@ td {
   width: 80%;
   margin-top: 5px;
   margin-bottom: 5px;
+  margin-right: auto;
+  margin-left: auto;
 }
+
 .registered {
-  border-color: #66ad77;
+  border: 2px solid #66ad77;
   background-color: white;
   color: #66ad77;
 }
 
-.chosen {
-  border-color: #1fa5ff;
-  background-color: white;
-  color: #1fa5ff;
-}
-
 .waiting {
-  border-color: #3f4041;
+  border: 2px solid #3f4041;
   background-color: white;
   color: #3f4041;
 }
@@ -135,11 +154,8 @@ td {
   display: flex;
 }
 
-.search fieldset {
-  width: 100%;
-}
-
 .search-form {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -167,6 +183,21 @@ td {
   border: 2px solid #0087e0;
   border-radius: 5px;
   margin: auto;
+}
+
+.courses th {
+  color: #1a4c89;
+  font-weight: bold;
+  font-size: larger;
+  padding-bottom: 2%;
+}
+
+.courses th,
+.courses td {
+  border: 1px solid black;
+  border-collapse: separate;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .choosefilter {
@@ -198,6 +229,7 @@ td {
   display: flex;
   text-align: center;
 }
+
 .chosen {
   background-color: #70c2f8;
   color: white;
@@ -208,13 +240,17 @@ td {
   direction: rtl;
   width: 100%;
   text-align: center;
-  border-collapse: collapse;
+  border-collapse: separate;
 }
 
 .courses th {
   color: #1a4c89;
   font-weight: bold;
   font-size: larger;
+}
+
+.course-type {
+  margin: auto;
 }
 
 .Umumi {
@@ -278,10 +314,18 @@ td {
   background-color: #1fa5ff;
 }
 
-.err {
+.err-container {
   margin-top: 2%;
   margin-bottom: 2%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.err {
+  border: 2px solid #ff595e;
   display: flex;
   flex-direction: column;
   justify-content: center;
