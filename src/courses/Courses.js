@@ -1,7 +1,11 @@
 import React from 'react';
 import axios from 'axios';
+import '../common/common.css';
 import './courses-style.css';
 import Header from '../common/Header';
+import getTypeText from '../common/getTypeText';
+import checkLogin from '../common/checkLogin';
+import Spinner from '../common/Spinner';
 
 import TRUSH from '../static/SRC/012-trash-bin.png';
 import REFRESH from '../static/SRC/reset.png';
@@ -9,14 +13,56 @@ import ADD from '../static/SRC/add.png';
 import ENTEZAR from '../static/SRC/entezar.png';
 
 class Courses extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            err: null,
+            loading: true
+        };
+    }
+
+    componentDidMount() {
+        document.title = 'انتخاب واحد';
+        this.setState({ loading: true });
+        checkLogin()
+            .then(res => {
+                if (!res)
+                    this.props.history.push('/login');
+                else
+                    this.setState({ loading: false });
+            });
+    }
+
     render() {
+        window.scrollTo(0, 0);
+        if (this.state.loading)
+            return (
+                <React.Fragment>
+                    <Header page="courses" />
+                    <Spinner />
+                </React.Fragment>
+            );
+        let error = null;
+        if (this.state.err)
+            error = (
+                <React.Fragment>
+                    <div className="err-container">
+                        <div className="err">
+                            <div className="err-short"><b>Error: </b>{this.state.err.short}</div>
+                            <div className="err-message">{this.state.err.message}</div>
+                        </div>
+                    </div>
+                </React.Fragment>
+            );
         return (
             <React.Fragment>
                 <Header page="courses" />
                 <br /><br /><br />
-                <SelectedCourses />
+                {error}
+                <br />
+                <SelectedCourses base={this} />
                 <br /><br /><br />
-                <AllCourses />
+                <AllCourses base={this} />
                 <br /><br /><br />
             </React.Fragment>
         );
@@ -27,67 +73,100 @@ class SelectedCourses extends React.Component {
     state = {
         data: [],
         offerings: [],
-        temp: 0
+        temp: 0,
+        loading: true
     }
+
     componentDidMount() {
-        axios({
-            method: 'get',
-            url: 'http://localhost:8080/student/offerings',
-        })
+        this.setState({ loading: true });
+        axios.get('http://localhost:8080/student/offerings')
             .then(response => {
-                this.setState({ data: response.data });
-                this.setState({ offerings: response.data.offerings });
+                this.setState({
+                    data: response.data,
+                    offerings: response.data.offerings,
+                    loading: false
+                });
+            })
+            .catch(err => {
+                if (err.status === 401)
+                    window.location.href = '/login';
+                else {
+                    this.props.base.setState({ err });
+                    this.setState({ loading: false });
+                }
             });
     }
 
-    handel(sel) {
+    handle(sel) {
         console.log(sel);
+        this.setState({ loading: true });
         axios({
             method: 'post',
             url: 'http://localhost:8080/student/offerings/' + sel,
         })
-        axios({
-            method: 'get',
-            url: 'http://localhost:8080/student/offerings',
-        })
             .then(response => {
-                this.setState({ data: response.data });
-                this.setState({ offerings: response.data.offerings });
                 window.location.reload();
+            })
+            .catch(err => {
+                if (err.response.status === 401)
+                    window.location.href = '/login';
+                else {
+                    this.props.base.setState({ err: err.response.data });
+                    this.setState({ loading: false });
+                }
             });
     }
 
-    delete(_code, _classCode) {
+    delete(code, classCode) {
+        this.setState({ loading: true });
         axios({
             method: 'delete',
             url: 'http://localhost:8080/student/offerings',
             data: {
-                code: _code,
-                classCode: _classCode
+                code: code,
+                classCode: classCode
             }
         })
-        window.location.reload();
+            .then(res => {
+                window.location.reload();
+            })
+            .catch(err => {
+                if (err.response.status === 401)
+                    window.location.href = '/login';
+                else {
+                    this.props.base.setState({ err: err.response.data });
+                    this.setState({ loading: false });
+                }
+            });
 
     }
     render() {
+
+        if (this.state.loading)
+            return <Spinner />;
+
         const items = [];
         var i;
         for (i = 0; i < this.state.offerings.length; i++) {
             items.push(
                 <tr>
-                    <td><img onClick={this.delete.bind(this, this.state.offerings[i].offering.course.code, this.state.offerings[i].offering.classCode)} src={TRUSH} className="icon" /></td>
                     <td>
-                        <button className={"state " + this.state.offerings[i].status}>
+                        <button onClick={this.delete.bind(this, this.state.offerings[i].offering.course.code, this.state.offerings[i].offering.classCode)}>
+                            <img src={TRUSH} className="icon" />
+                        </button>
+                    </td>
+                    <td>
+                        <div className={"state " + this.state.offerings[i].status}>
                             {
-                                this.state.offerings[i].status == "registered" ? "ثبت شده " :
-                                    this.state.offerings[i].status == "waiting" ?
+                                this.state.offerings[i].status === "registered" ? "ثبت شده " :
+                                    this.state.offerings[i].status === "waiting" ?
                                         "در انتظار" : "ثبت نهایی نشده"
                             }
 
-                        </button>
+                        </div>
                     </td>
-                    <td>{this.state.offerings[i].offering.course.code
-                        + "-" + this.state.offerings[i].offering.classCode}</td>
+                    <td>{this.state.offerings[i].offering.classCode
+                        + "_" + this.state.offerings[i].offering.course.code}</td>
                     <td>{this.state.offerings[i].offering.course.name}</td>
                     <td>{this.state.offerings[i].offering.teacher}</td>
                     <td>{this.state.offerings[i].offering.course.units}</td>
@@ -118,8 +197,8 @@ class SelectedCourses extends React.Component {
                             <p>تعداد واحد های ثبت شده: {this.state.data.chosenUnits}</p>
                         </div>
                         <div className="chosenCourse-bottom-left-div">
-                            <button onClick={this.handel.bind(this, "submit")} className="green-button submit">ثبت نهایی</button>
-                            <img onClick={this.handel.bind(this, "reset")} src={REFRESH} className="reset" />
+                            <button onClick={this.handle.bind(this, "submit")} className="green-button submit">ثبت نهایی</button>
+                            <button onClick={this.handle.bind(this, "reset")} className="reset-button"><img src={REFRESH} className="reset" /></button>
                         </div>
                     </div>
                 </fieldset>
@@ -144,19 +223,32 @@ function AllCoursesHeader() {
 }
 
 class AllCourses extends React.Component {
-    state = {
-        data: [],
-        sel: "all",
-        searchBox: '',
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: [],
+            sel: "all",
+            searchBox: '',
+            loading: true
+        }
     }
+
     componentDidMount() {
-        axios({
-            method: 'get',
-            url: 'http://localhost:8080/offerings',
-        })
+        this.setState({ loading: true })
+        axios.get('http://localhost:8080/offerings')
             .then(response => {
-                this.setState({ data: response.data });
-                //TODO check alternations
+                this.setState({
+                    data: response.data,
+                    loading: false
+                });
+            })
+            .catch(err => {
+                if (err.status === 401)
+                    window.location.href = '/login';
+                else {
+                    this.props.base.setState({ err });
+                    this.setState({ loading: false });
+                }
             });
     }
 
@@ -164,15 +256,23 @@ class AllCourses extends React.Component {
         this.setState({ sel });
     }
 
-    sreachRequest(event) {
+    searchRequest(event) {
         event.preventDefault();
-        axios({
-            method: 'get',
-            url: 'http://localhost:8080/offerings/search?q=' + this.state.searchBox,
-        })
+        this.setState({ loading: true });
+        axios.get('http://localhost:8080/offerings/search?q=' + this.state.searchBox)
             .then(response => {
-                this.setState({ data: response.data });
-                //TODO check alternations
+                this.setState({
+                    data: response.data,
+                    loading: false
+                });
+            })
+            .catch(err => {
+                if (err.status === 401)
+                    window.location.href = '/login';
+                else {
+                    this.props.base.setState({ err });
+                    this.setState({ loading: false });
+                }
             });
     }
 
@@ -180,10 +280,16 @@ class AllCourses extends React.Component {
         this.setState({
             [target.name]: target.value
         });
-    }
-
-    errorCallback(data) {
-        this.setState({ err: data });
+        // axios.get('http://localhost:8080/offerings/search?q=' + this.state.searchBox)
+        //     .then(res => {
+        //         this.setState({ data: res.data });
+        //     })
+        //     .catch(err => {
+        //         if (err.status === 401)
+        //             window.location.href = '/login';
+        //         else
+        //             this.props.base.setState({ err });
+        //     });
     }
 
     getSelectButtons() {
@@ -214,34 +320,21 @@ class AllCourses extends React.Component {
     }
 
     render() {
-
-        let error = null;
-        if (this.state.err)
-            error = (
-                <React.Fragment>
-                    <div className="err">
-                        <div className="err-short">{this.state.err.short}</div>
-                        <div className="err-message">{this.state.err.message}</div>
-                    </div>
-                </React.Fragment>
-            );
-
+        if (this.state.loading)
+            return <Spinner />;
         let selectButtons = this.getSelectButtons();
         return (
             <React.Fragment>
                 <div className="search">
-                    <fieldset>
-                        <form onSubmit={this.sreachRequest.bind(this)} className="search-form">
-                            <input name="searchBox" className="search-input" onChange={this.handleChange.bind(this)} autoComplete="off" placeholder="نام درس" />
-                            <input className="green-button" type="submit" value="جستجو" />
-                        </form>
-                    </fieldset>
+                    <form onSubmit={this.searchRequest.bind(this)} className="search-form">
+                        <input name="searchBox" className="search-input" onChange={this.handleChange.bind(this)} autoComplete="off" placeholder="نام درس" />
+                        <input className="green-button" type="submit" value="جستجو" />
+                    </form>
                 </div>
                 <br /><br />
                 <div className="courses">
                     <fieldset>
                         <legend >دروس ارائه شده </legend>
-                        {error}
                         <div>
                             <table>
                                 {selectButtons}
@@ -251,7 +344,7 @@ class AllCourses extends React.Component {
                                 <table>
                                     <AllCoursesHeader />
                                     <tbody>
-                                    <CourseRows data={this.state.data} sel={this.state.sel} parent={this} />
+                                        <CourseRows data={this.state.data} sel={this.state.sel} base={this.props.base} />
                                     </tbody>
                                 </table>
                             </div>
@@ -265,94 +358,77 @@ class AllCourses extends React.Component {
 
 class CourseRows extends React.Component {
 
-    handelReq(_code, _classCode) {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        const items = [];
+        var i;
+        for (i = 0; i < this.props.data.length; i++) {
+            if (this.props.sel === "all" || this.props.data[i].course.type === this.props.sel) {
+                items.push(
+                    <CourseRow offering={this.props.data[i]} base={this.props.base} />
+                );
+            }
+        }
+        return items;
+    }
+}
+
+
+class CourseRow extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    addCourse(code, classCode) {
         axios({
             method: 'post',
             url: 'http://localhost:8080/student/offerings',
             data: {
-                code: _code,
-                classCode: _classCode
+                code: code,
+                classCode: classCode
             }
         })
             .then(response => {
-                console.log(response.data);
                 window.location.reload();
             })
             .catch(err => {
+                console.log(err.response.status);
                 if (err.response.status === 401)
                     window.location.href = '/login';
-                else
-                    this.props.parent.setState({ err: err.response.data });
-            })
+                else {
+                    this.props.base.setState({ err: err.response.data });
+                }
+            });
     }
 
     render() {
-
-        const items = [];
-        var i;
-        if (this.props.sel == "all") {
-            for (i = 0; i < this.props.data.length; i++) {
-                items.push(
-                    <tr>
-                        <td><img onClick={this.handelReq.bind(this, this.props.data[i].course.code, this.props.data[i].classCode)}
-                            src={this.props.data[i].isFull == true ? ENTEZAR : ADD}
-                            className="icon" />
-                        </td>
-                        <td>{this.props.data[i].classCode + "_" + this.props.data[i].course.code}</td>
-                        <td>{this.props.data[i].capacity + " / " + this.props.data[i].registered}</td>
-                        <td>
-                            <button className={this.props.data[i].course.type} >
-                                {
-                                    this.props.data[i].course.type == "Asli" ?
-                                        "اصلی" : this.props.data[i].course.type == "Takhasosi" ?
-                                            "تخصصی" : this.props.data[i].course.type == "Umumi" ?
-                                                "عمومی" : "پایه"
-                                }
-                            </button>
-                        </td>
-                        <td>{this.props.data[i].course.name}</td>
-                        <td>{this.props.data[i].teacher}</td>
-                        <td>{this.props.data[i].course.units}</td>
-                        <td>زمان کلاس {this.props.data[i].time}</td>
-                    </tr>
-                );
-            }
-        } else {
-            for (i = 0; i < this.props.data.length; i++) {
-                if (this.props.data[i].course.type == this.props.sel) {
-                    items.push(
-                        <tr>
-                            <td><img onClick={this.handelReq.bind(this, this.props.data[i].course.code, this.props.data[i].classCode)}
-                                src={this.props.data[i].isFull == true ? ENTEZAR : ADD}
-                                className="icon" />
-                            </td>
-                            <td>{this.props.data[i].course.code + "-" + this.props.data[i].classCode}</td>
-                            <td>{this.props.data[i].registered + "/" + this.props.data[i].capacity}</td>
-                            <td>
-                                <button className={this.props.data[i].course.type} >
-                                    {
-                                        this.props.data[i].course.type == "Asli" ?
-                                            "اصلی" : this.props.data[i].course.type == "Takhasosi" ?
-                                                "تخصصی" : this.props.data[i].course.type == "Umumi" ?
-                                                    "عمومی" : "پایه"
-                                    }
-                                </button>
-                            </td>
-                            <td>{this.props.data[i].course.name}</td>
-                            <td>{this.props.data[i].teacher}</td>
-                            <td>{this.props.data[i].course.units}</td>
-                            <td>زمان کلاس {this.props.data[i].time}</td>
-                        </tr>
-                    );
-                }
-            }
-        }
         return (
-            <React.Fragment>
-                {items}
-            </React.Fragment>
+            <tr>
+                <td>
+                    <button onClick={this.addCourse.bind(this, this.props.offering.course.code, this.props.offering.classCode)}>
+                        <img src={this.props.offering.isFull === true ? ENTEZAR : ADD}
+                            className="icon" />
+                    </button>
+                </td>
+                <td>{this.props.offering.classCode + "_" + this.props.offering.course.code}</td>
+                <td>{this.props.offering.capacity + " / " + this.props.offering.registered}</td>
+                <td>
+                    <div className={this.props.offering.course.type + " course-type"} >
+                        {getTypeText(this.props.offering)}
+                    </div>
+                </td>
+                <td>{this.props.offering.course.name}</td>
+                <td>{this.props.offering.teacher}</td>
+                <td>{this.props.offering.course.units}</td>
+                <td>زمان کلاس {this.props.offering.time}</td>
+            </tr>
         );
     }
+
 }
 
 
