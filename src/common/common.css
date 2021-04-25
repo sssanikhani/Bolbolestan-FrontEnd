@@ -60,18 +60,19 @@ button:active {
   position: relative;
 }
 
-#login-page {
+.cover-background {
   position: fixed;
   top: 0;
   bottom: 0;
-  height: auto;
-  width: auto;
   background: url(../static/SRC/cover\ photo.jpg);
   object-position: 50px 50 px;
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #root {

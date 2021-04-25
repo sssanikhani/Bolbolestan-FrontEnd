@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import checkLogin from '../common/checkLogin';
@@ -56,16 +57,8 @@ class Login extends Component {
 
   render() {
     if (this.state.loading)
-      return (
-        <React.Fragment>
-          <Spinner />
-        </React.Fragment>
-      );
-    let falseUserPass = (
-      <React.Fragment>
-        <br/>
-      </React.Fragment>
-    );
+      return <Spinner />;
+    let falseUserPass = <br/>;
     if (this.state.falseCredentials) {
       falseUserPass = (
         <React.Fragment>
@@ -75,7 +68,7 @@ class Login extends Component {
       );
     }
     return (
-      <div id="login-page">
+      <div className="cover-background">
         <div className="login-form">
           <fieldset className="login-fieldset">
             <form onSubmit={this.submitForm.bind(this)} >
@@ -87,6 +80,7 @@ class Login extends Component {
               <input dir="ltr" onChange={this.handleChange.bind(this)} className="login-input" type="password" id="pass" name="pass" /><br /><br />
               <input className="login-button" type="submit" value="ورود" /><br /><br />
             </form>
+            <Link to="/signup">ثبت نام</Link>
           </fieldset>
         </div>
         <Footer />
