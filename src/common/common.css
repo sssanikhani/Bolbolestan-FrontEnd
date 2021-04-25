@@ -140,6 +140,10 @@ footer>.leftside {
     height: 30px;
 }
 
+input:focus {
+    outline-width: 0;
+}
+
 .spinner-container {
     width: 100%;
     min-height: 100vh;
