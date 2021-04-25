@@ -31,26 +31,28 @@
   justify-content: center;
   display: flex;
 }
-.home-information table {
+.home-information > table {
   margin: auto;
   width: 100%;
+  min-height: 80vh;
   align-items: center;
 }
 
-.home-information table tr {
+.home-information > table > tr {
   margin: auto;
   width: 100%;
   align-items: center;
   border: none;
 }
 .home-information-detail {
-  height: 100%;
+  display: flex;
+  justify-content: center;
   width: 100%;
-  position: absolute;
-  top: 0;
+  height: 100%;
 }
 
 .home-information-detail table tr td {
+  min-height: 100vh;
   text-align: center;
   color: black;
   border: none;
