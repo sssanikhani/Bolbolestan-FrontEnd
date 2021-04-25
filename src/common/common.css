@@ -67,6 +67,7 @@ button:active {
   height: auto;
   width: auto;
   background: url(../static/SRC/cover\ photo.jpg);
+  object-position: 50px 50 px;
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -164,7 +165,7 @@ footer > .rightside * {
 }
 
 footer > .leftside {
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 20%;
 }
 
