@@ -8,6 +8,7 @@ import $ from 'jquery';
 import './normalize.css';
 import './common.css';
 import './static/Fonts/vazir-fonts/fonts.css';
+import Home from './home/Home';
 
 
 class App extends React.Component {
@@ -25,10 +26,7 @@ class App extends React.Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/">
-            <Header page="home" />
-            <div>home</div>
-          </Route>
+          <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/courses">
             <Header page="courses" />
