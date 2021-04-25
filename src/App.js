@@ -9,6 +9,7 @@ import './common/normalize.css';
 import './common/common.css';
 import './static/Fonts/vazir-fonts/fonts.css';
 import Home from './home/Home';
+import Courses from './courses/Courses';
 
 
 class App extends React.Component {
@@ -27,10 +28,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/courses">
-            <Header page="courses" />
-            <div>courses</div>
-          </Route>
+          <Route exact path="/courses" component={Courses} />
           <Route exact path="/plan" component={Plan} />
           <Route component={NotFound} />
         </Switch>

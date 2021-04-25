@@ -1,0 +1,294 @@
+hr {
+  background-color: #1a4c89;
+}
+* {
+  font-family: Vazir;
+}
+/* LEGEND */
+legend {
+  background-color: #0087e0;
+  padding: 5px;
+  color: white;
+  border-radius: 5px;
+  font-size: large;
+  font-weight: bold;
+  padding-left: 2%;
+  padding-right: 2%;
+  width: 50%;
+}
+
+/*CHOSENCOURSES*/
+.chosenCourses {
+  margin: auto;
+  width: 90%;
+}
+.chosenCourses fieldset {
+  border: 2px solid #0087e0;
+  border-radius: 5px;
+}
+
+.chosenCourses table {
+  direction: rtl;
+  margin: auto;
+  width: 95%;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th {
+  color: #1a4c89;
+  font-weight: bold;
+  font-size: larger;
+  padding-bottom: 2%;
+}
+
+.chosenCourses th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.chosenCourses {
+  margin: auto;
+  width: 90%;
+}
+.chosenCourses-bottom {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+}
+.chosenCourse-bottom-right-div {
+  float: right;
+  font-weight: bold;
+  color: #1a4c89;
+  margin-right: 5%;
+  display: inline;
+}
+.chosenCourse-bottom-left-div {
+  float: left;
+  margin-left: 5%;
+  font-weight: bold;
+  align-items: center;
+  display: inline;
+}
+
+.chosenCourse-bottom-left-div * {
+  float: left;
+}
+
+.green-button {
+  border-radius: 5px;
+  background-color: #06d6a0;
+  border: 2px solid #06d6a0;
+  width: 150px;
+  height: 40px;
+  color: white;
+  font-size: large;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+}
+.icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+}
+
+.reset {
+  float: right;
+  width: 40px;
+  height: 40px;
+}
+.state {
+  border-radius: 5px;
+  font-size: large;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 80%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.registered {
+  border-color: #66ad77;
+  background-color: white;
+  color: #66ad77;
+}
+
+.chosen {
+  border-color: #1fa5ff;
+  background-color: white;
+  color: #1fa5ff;
+}
+
+.waiting {
+  border-color: #3f4041;
+  background-color: white;
+  color: #3f4041;
+}
+/* SEARCH */
+.search {
+  margin: auto;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}
+
+.search fieldset {
+  width: 100%;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-form .green-button {
+  width: 10%;
+}
+
+.search-input {
+  width: 300px;
+  height: 35px;
+  border-radius: 5px;
+  margin-left: 10px;
+  text-align: center;
+}
+
+/* COURSES */
+.courses {
+  margin: auto;
+  width: 90%;
+}
+
+.courses fieldset {
+  border: 2px solid #0087e0;
+  border-radius: 5px;
+  margin: auto;
+}
+
+.choosefilter {
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  margin: auto;
+  width: 90%;
+}
+
+.choosefilter td {
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  margin: auto;
+  border: none;
+}
+.filterbox {
+  border: 2px solid gray;
+  border-radius: 10px;
+  background-color: white;
+  color: gray;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  text-align: center;
+}
+.chosen {
+  background-color: #70c2f8;
+  color: white;
+  border-color: #70c2f8;
+}
+
+.courses table {
+  direction: rtl;
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.courses th {
+  color: #1a4c89;
+  font-weight: bold;
+  font-size: larger;
+}
+
+.Umumi {
+  color: white;
+  font-size: large;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+  width: 90%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  border-color: #edbb41;
+  background-color: #edbb41;
+}
+.Asli {
+  color: white;
+  font-size: large;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+  width: 90%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  border-color: #06d6a0;
+  background-color: #06d6a0;
+}
+.Paaye {
+  color: white;
+  font-size: large;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+  width: 90%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  border-color: #ff595e;
+  background-color: #ff595e;
+}
+.Takhasosi {
+  color: white;
+  font-size: large;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+  width: 90%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  border-color: #1fa5ff;
+  background-color: #1fa5ff;
+}
+
+.err {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.err-short {
+  font-weight: bold;
+  color: red;
+}
