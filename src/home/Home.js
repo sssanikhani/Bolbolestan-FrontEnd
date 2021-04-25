@@ -22,7 +22,7 @@ class Home extends React.Component {
             .then(res => {
                 if (!res)
                     this.props.history.push('/login');
-                this.setState({loading: false});
+                this.setState({ loading: false });
             });
     }
 
@@ -49,7 +49,7 @@ class Home extends React.Component {
                             </td>
                             <td className="home-seperator-left">
                                 <div className="home-karname">
-                                    <Karnames />
+                                    <AllReportCards />
                                 </div>
                             </td>
                         </tr>
@@ -69,11 +69,11 @@ class Information extends React.Component {
     };
 
     componentDidMount() {
-        this.setState({loading: true});
+        this.setState({ loading: true });
         axios.get('http://localhost:8080/student')
             .then(res => {
                 this.setState({ data: res.data });
-                this.setState({loading: false});
+                this.setState({ loading: false });
             })
             .catch(err => {
                 if (err.status === 401)
@@ -131,45 +131,46 @@ class Information extends React.Component {
     }
 }
 
-class Karnames extends React.Component {
+class AllReportCards extends React.Component {
     state = {
         loading: true,
         data: [],
     }
 
+    sortReportCards(data) {
+        let tempData = [...data];
+        tempData.sort(
+            (a, b) => {
+                return (a.term > b.term) ? 1 : -1;
+            }
+        );
+        return tempData;
+    }
+
     componentDidMount() {
-        this.setState({loading: true});
+        this.setState({ loading: true });
         axios.get('http://localhost:8080/student/report-card')
             .then(response => {
-                this.setState({ data: response.data });
-                this.setState({loading: false});
+                this.setState({ data: this.sortReportCards(response.data) });
+                this.setState({ loading: false });
                 //TODO check alternations
             })
             .catch(err => {
-                if(err.status === 401)
+                if (err.status === 401)
                     window.location.href = '/login';
             });
     }
 
     render() {
-        if(this.state.loading)
+        if (this.state.loading)
             return <Spinner />;
         const items = [];
         var i, j;
-        for (i = this.state.data.length - 1; i >= 0; i--) {
-
+        for (i = 0; i < this.state.data.length; i++) {
+            let term = this.state.data[i].term;
             items.push(
-                <React.Fragment>
-                    <fieldset>
-                        <legend><div>کارنامه - ترم {i + 1}</div></legend>
-                        <table>
-                            <AnKarname data={this.state.data[i].grades} />
-                        </table>
-                        <br />
-                        <div className="home-gpa">معدل : {this.state.data[i].gpa}</div>
-                    </fieldset>
-                    <br /><br />
-                </React.Fragment>);
+                <SingleReportCard data={this.state.data[i]} />
+            );
         }
 
         return (
@@ -181,40 +182,41 @@ class Karnames extends React.Component {
     }
 }
 
-class AnKarname extends React.Component {
+class SingleReportCard extends React.Component {
 
     render() {
         const items = [];
+        const grades = this.props.data.grades;
         var k;
-        for (k = 0; k < this.props.data.length; k++) {
-            if (this.props.data[k].grade >= 10) {
+        for (k = 0; k < grades.length; k++) {
+            if (grades[k].grade >= 10) {
                 items.push(<tr>
                     <td>{k + 1}</td>
-                    <td>{this.props.data[k].course.code}</td>
-                    <td>{this.props.data[k].course.name}</td>
-                    <td>{this.props.data[k].course.units} واحد</td>
+                    <td>{grades[k].course.code}</td>
+                    <td>{grades[k].course.name}</td>
+                    <td>{grades[k].course.units} واحد</td>
                     <td>
                         <p className="home-accept-box home-box">قبول</p>
                     </td>
-                    <td className="home-accept">{this.props.data[k].grade}</td>
+                    <td className="home-accept">{grades[k].grade}</td>
                 </tr>);
-            } else if (this.props.data[k].grade < 10) {
+            } else if (grades[k].grade < 10) {
                 items.push(<tr>
                     <td>{k + 1}</td>
-                    <td>{this.props.data[k].course.code}</td>
-                    <td>{this.props.data[k].course.name}</td>
-                    <td>واحد{this.props.data[k].course.units}</td>
+                    <td>{grades[k].course.code}</td>
+                    <td>{grades[k].course.name}</td>
+                    <td>واحد{grades[k].course.units}</td>
                     <td>
                         <p className="home-fail-box home-box">مردود</p>
                     </td>
-                    <td className="home-fail">{this.props.data[k].grade}</td>
+                    <td className="home-fail">{grades[k].grade}</td>
                 </tr>);
             } else {
                 items.push(<tr>
                     <td>{k + 1}</td>
-                    <td>{this.props.data[k].course.code}</td>
-                    <td>{this.props.data[k].course.name}</td>
-                    <td>واحد{this.props.data[k].course.units}</td>
+                    <td>{grades[k].course.code}</td>
+                    <td>{grades[k].course.name}</td>
+                    <td>واحد{grades[k].course.units}</td>
                     <td>
                         <p className="home-not-number-box home-box">نامشخص</p>
                     </td>
@@ -223,8 +225,21 @@ class AnKarname extends React.Component {
             }
         }
 
+        let term = this.props.data.term;
+        let gpa = this.props.data.gpa;
         return (
-            items
+            <React.Fragment>
+                <fieldset>
+                    <legend><div>کارنامه - ترم {term}</div></legend>
+                    <table>
+                        {items}
+                    </table>
+                    <br />
+                    <div className="home-gpa">معدل : {gpa}</div>
+                </fieldset>
+                <br /><br />
+            </React.Fragment>
+
         );
     }
 }
