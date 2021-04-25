@@ -7,6 +7,7 @@ import '../css/total.css';
 import COVER from '../static/SRC/cover photo.jpg'
 import checkLogin from '../common/checkLogin';
 import Header from '../common/Header';
+import Footer from '../common/Footer';
 import Spinner from '../common/Spinner';
 
 class Home extends React.Component {
@@ -18,6 +19,7 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
+        document.title = 'خانه';
         checkLogin()
             .then(res => {
                 if (!res)
@@ -55,6 +57,7 @@ class Home extends React.Component {
                         </tr>
                     </table>
                 </div>
+                <Footer />
             </React.Fragment>
         );
     }

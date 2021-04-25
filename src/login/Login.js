@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import checkLogin from '../common/checkLogin';
 import Spinner from '../common/Spinner';
 import './login-style.css';
+import Footer from '../common/Footer';
 
 class Login extends Component {
   state = {
@@ -88,6 +89,7 @@ class Login extends Component {
             </form>
           </fieldset>
         </div>
+        <Footer />
       </div>
     );
   }

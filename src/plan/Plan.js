@@ -4,6 +4,7 @@ import '../common/common.css';
 import './plan.css';
 import axios from 'axios';
 import Header from '../common/Header';
+import Footer from '../common/Footer';
 import checkLogin from '../common/checkLogin';
 import Spinner from '../common/Spinner';
 import PlanRow from './PlanRow';
@@ -81,6 +82,7 @@ class Plan extends React.Component {
                         </table>
                     </div>
                 </main>
+                <Footer />
             </React.Fragment>
         );
     }

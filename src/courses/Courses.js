@@ -11,6 +11,7 @@ import TRUSH from '../static/SRC/012-trash-bin.png';
 import REFRESH from '../static/SRC/reset.png';
 import ADD from '../static/SRC/add.png';
 import ENTEZAR from '../static/SRC/entezar.png';
+import Footer from '../common/Footer';
 
 class Courses extends React.Component {
     constructor(props) {
@@ -64,6 +65,7 @@ class Courses extends React.Component {
                 <br /><br /><br />
                 <AllCourses base={this} />
                 <br /><br /><br />
+                <Footer />
             </React.Fragment>
         );
     }
