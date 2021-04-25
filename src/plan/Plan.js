@@ -13,14 +13,6 @@ class Plan extends React.Component {
 
     constructor(props) {
         super(props);
-        this.days = [
-            "Saturday",
-            "Sunday",
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday"
-        ];
         this.startHour = 7;
         this.endHour = 18;
         this.state = {
@@ -29,38 +21,11 @@ class Plan extends React.Component {
         }
     }
 
-    parseTime(time) {
-        let timeParts = time.split(":");
-        let hour = parseInt(timeParts[0]);
-        let minute = parseInt(timeParts[1]);
-        return {
-            hour: hour,
-            minute: minute
-        }
-    }
-
-    sortPlan(data) {
-        let planList = [];
-        this.days.forEach(
-            day => {
-                let planDay = [...data[day]];
-                planDay.sort((a, b) => {
-                    let aTime = this.parseTime(a.time);
-                    let bTime = this.parseTime(b.time);
-                    return (aTime.hour > bTime.hour) ? 1 : -1;
-                });
-                planList.push(planDay);
-            }
-        );
-        return planList;
-    }
-
     getPlan() {
         axios.get('http://localhost:8080/student/plan')
             .then(
                 res => {
                     if (res.status === 200) {
-                        // let sortedPlan = this.sortPlan(res.data);
                         this.setState({ plan: res.data });
                         this.setState({ loading: false });
                     }
