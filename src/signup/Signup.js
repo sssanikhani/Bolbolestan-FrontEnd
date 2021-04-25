@@ -17,6 +17,7 @@ class SignUp extends React.Component {
     }
 
     componentDidMount() {
+        document.title = 'ثبت نام';
         this.setState({ loading: true });
         checkLogin()
             .then(res => {
@@ -28,7 +29,7 @@ class SignUp extends React.Component {
     }
 
     submitForm() {
-        ;
+        this.setState({ loading: true });
         axios({
             method: 'post',
             url: 'http://localhost:8080/student',
@@ -43,7 +44,10 @@ class SignUp extends React.Component {
                 window.location.href = '/';
             })
             .catch(err => {
-                this.setState({ err });
+                this.setState({
+                    err: err,
+                    loading: false
+                });
             });
     }
 
