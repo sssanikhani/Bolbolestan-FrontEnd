@@ -10,6 +10,7 @@ import './common/common.css';
 import './static/Fonts/vazir-fonts/fonts.css';
 import Home from './home/Home';
 import Courses from './courses/Courses';
+import SignUp from './signup/Signup';
 
 
 class App extends React.Component {
@@ -30,6 +31,7 @@ class App extends React.Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/courses" component={Courses} />
           <Route exact path="/plan" component={Plan} />
+          <Route exact path="/signup" component={SignUp} />
           <Route component={NotFound} />
         </Switch>
       </Router>
