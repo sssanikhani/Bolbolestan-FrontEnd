@@ -74,8 +74,9 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 5px;
+  border-radius: 10px;
   width: 85%;
+  background-color: white;
 }
 .home-karname legend {
   display: flex;

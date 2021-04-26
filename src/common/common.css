@@ -23,7 +23,7 @@ fieldset {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 5px;
+  border-radius: 10px;
   width: 85%;
 }
 
@@ -58,6 +58,7 @@ button:active {
   min-height: 100vh;
   height: fit-content;
   position: relative;
+  background-color: #f3f9fd;
 }
 
 .cover-background {
@@ -125,6 +126,8 @@ footer {
 
 header > .rightside > * {
   margin: 5%;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 header > .leftside {
@@ -135,6 +138,7 @@ header > .leftside {
 .logout-button {
   background-color: white;
   border-radius: 5px;
+  padding: 0.5%;
   border: 0;
 }
 

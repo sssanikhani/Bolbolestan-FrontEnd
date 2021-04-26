@@ -97,10 +97,10 @@ class Information extends React.Component {
                     </tr>
                     <br /><br />
                     <tr>
-                        <td><p><span>نام:</span>{this.state.data.name}</p></td>
+                        <td><p><span>نام:</span> {this.state.data.name}</p></td>
                     </tr>
                     <tr>
-                        <td><p><span>نام خانوادگی:</span>{this.state.data.secondName}</p></td>
+                        <td><p><span>نام خانوادگی:</span> {this.state.data.secondName}</p></td>
                     </tr>
                     <tr>
                         <td><p><span>شماره دانشجویی:</span> {this.state.data.id}</p></td>
@@ -115,13 +115,13 @@ class Information extends React.Component {
                         <td><p><span>واحد گذرانده:</span> {this.state.data.totalPassedUnits}</p></td>
                     </tr>
                     <tr>
-                        <td><p><span>دانشکده:</span>{this.state.data.faculty}</p></td>
+                        <td><p><span>دانشکده:</span> {this.state.data.faculty}</p></td>
                     </tr>
                     <tr>
-                        <td><p><span>رشته:</span>{this.state.data.field}</p></td>
+                        <td><p><span>رشته:</span> {this.state.data.field}</p></td>
                     </tr>
                     <tr>
-                        <td><p><span>مقطع:</span>{this.state.data.level}</p></td>
+                        <td><p><span>مقطع:</span> {this.state.data.level}</p></td>
                     </tr>
                     <tr>
                         <td><p className="home-type">{this.state.data.status}</p></td>
