@@ -13,7 +13,7 @@ class TableTemplate extends React.Component {
                     <td colspan="7" id="table-title-cell">
                         <div>
                             <div className="rightside">
-                                <img src={calendarLogo} className="icon" />
+                                <img src={calendarLogo} alt="calendar" className="icon" />
                                 برنامه هفتگی
                             </div>
                             <div className="leftside">ترم 6</div>

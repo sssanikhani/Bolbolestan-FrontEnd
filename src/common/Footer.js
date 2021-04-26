@@ -12,16 +12,16 @@ class Footer extends React.Component {
         return (
             <footer>
                 <div className="rightside">
-                    <img src={CopyRight} className="icon" />
+                    <img src={CopyRight} alt="copyright" className="icon" />
                     <div>
                         <p>دانشگاه تهران - سامانه ی جامع بلبل ستان</p>
                     </div>
                 </div>
                 <div className="leftside">
-                    <a href='https://facebook.com/bolbolestan'><img src={FaceBook} className="icon" /></a>
-                    <a href='https://linkedin.com/bolbolestan'><img src={Linkedin} className="icon" /></a>
-                    <a href='https://instagram.com/bolbolestan'><img src={Instagram} className="icon" /></a>
-                    <a href='https://twitter.com/bolbolestan'><img src={Twitter} className="icon" /></a>
+                    <a href='https://facebook.com/bolbolestan'><img src={FaceBook} alt="facebook" className="icon" /></a>
+                    <a href='https://linkedin.com/bolbolestan'><img src={Linkedin} alt="linkedin" className="icon" /></a>
+                    <a href='https://instagram.com/bolbolestan'><img src={Instagram} alt="instagram" className="icon" /></a>
+                    <a href='https://twitter.com/bolbolestan'><img src={Twitter} alt="twitter" className="icon" /></a>
                 </div>
             </footer>
         );

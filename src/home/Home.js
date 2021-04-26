@@ -38,7 +38,7 @@ class Home extends React.Component {
             <React.Fragment>
                 <Header page="home" />
                 <div className="home-slider">
-                    <img src={COVER} className="home-cover" />
+                    <img src={COVER} alt="cover" className="home-cover" />
                 </div>
                 <br /><br />
                 <div className="home-information">
@@ -92,7 +92,7 @@ class Information extends React.Component {
                 <table className="home-info-detail">
                     <tr>
                         <td>
-                            <img src={this.state.data.img} className="home-profile-pic" />
+                            <img src={this.state.data.img} alt="profile" className="home-profile-pic" />
                         </td>
                     </tr>
                     <br /><br />

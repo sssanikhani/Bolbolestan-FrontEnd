@@ -53,12 +53,12 @@ class Header extends React.Component {
     return (
       <header className="fixed-top">
         <div className="rightside">
-          <img className="logo" src={logo} />
+          <img className="logo" alt="logo" src={logo} />
           {links}
         </div>
         <button className="leftside logout-button" onClick={this.logout.bind(this)}>
           <span>خروج</span>
-          <img src={logoutLogo} className="icon" />
+          <img src={logoutLogo} alt="logout" className="icon" />
         </button>
       </header>
     );

@@ -154,7 +154,7 @@ class SelectedCourses extends React.Component {
                 <tr>
                     <td>
                         <button onClick={this.delete.bind(this, this.state.offerings[i].offering.course.code, this.state.offerings[i].offering.classCode)}>
-                            <img src={TRUSH} className="icon" />
+                            <img src={TRUSH} alt="delete" className="icon" />
                         </button>
                     </td>
                     <td>
@@ -200,7 +200,7 @@ class SelectedCourses extends React.Component {
                         </div>
                         <div className="chosenCourse-bottom-left-div">
                             <button onClick={this.handle.bind(this, "submit")} className="green-button submit">ثبت نهایی</button>
-                            <button onClick={this.handle.bind(this, "reset")} className="reset-button"><img src={REFRESH} className="reset" /></button>
+                            <button onClick={this.handle.bind(this, "reset")} className="reset-button"><img src={REFRESH} alt="reset" className="reset" /></button>
                         </div>
                     </div>
                 </fieldset>
@@ -404,7 +404,7 @@ class CourseRow extends React.Component {
                 <td>
                     <button onClick={this.addCourse.bind(this, this.props.offering.course.code, this.props.offering.classCode)}>
                         <img src={this.props.offering.isFull === true ? ENTEZAR : ADD}
-                            className="icon" />
+                            alt="add" className="icon" />
                     </button>
                 </td>
                 <td>{this.props.offering.classCode + "_" + this.props.offering.course.code}</td>
