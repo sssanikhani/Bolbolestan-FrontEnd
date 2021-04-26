@@ -359,11 +359,6 @@ class AllCourses extends React.Component {
 }
 
 class CourseRows extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const items = [];
         var i;
@@ -380,10 +375,6 @@ class CourseRows extends React.Component {
 
 
 class CourseRow extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     addCourse(code, classCode) {
         axios({

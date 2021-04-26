@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Header from './common/Header';
 import NotFound from './NotFound';
 import Plan from './plan/Plan';
 import Login from './login/Login';
@@ -14,10 +13,6 @@ import SignUp from './signup/Signup';
 
 
 class App extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     $('body').attr('dir', 'rtl');

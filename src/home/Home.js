@@ -166,9 +166,8 @@ class AllReportCards extends React.Component {
         if (this.state.loading)
             return <Spinner />;
         const items = [];
-        var i, j;
+        var i;
         for (i = 0; i < this.state.data.length; i++) {
-            let term = this.state.data[i].term;
             items.push(
                 <SingleReportCard data={this.state.data[i]} />
             );

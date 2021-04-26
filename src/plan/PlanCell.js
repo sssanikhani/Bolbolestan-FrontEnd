@@ -2,9 +2,6 @@ import React from 'react';
 import './plan.css';
 
 class PlanCell extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     getLengthClassName(time) {
         let minDiff = time.minDiff;
