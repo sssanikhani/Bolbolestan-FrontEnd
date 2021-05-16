@@ -12,6 +12,10 @@ class SignUp extends React.Component {
         err: null,
         firstName: '',
         secondName: '',
+        birthDate: '',
+        field: '',
+        faculty: '',
+        level: '',
         email: '',
         pass: ''
     }
@@ -36,6 +40,10 @@ class SignUp extends React.Component {
             data: {
                 firstName: this.state.firstName,
                 secondName: this.state.secondName,
+                birthDate: this.state.birthDate,
+                field: this.state.field,
+                faculty: this.state.faculty,
+                level: this.state.level,
                 email: this.state.email,
                 pass: this.state.pass
             }
@@ -69,10 +77,18 @@ class SignUp extends React.Component {
                         <input onChange={this.handleChange.bind(this)} className="signup-input" type="text" id="fname" name="firstName" /><br /><br />
                         <label for="sname">نام خانوادگی</label><br /><br />
                         <input onChange={this.handleChange.bind(this)} className="signup-input" type="text" id="sname" name="secondName" /><br /><br />
+                        <label for="bdate">تاریخ تولد</label><br /><br />
+                        <input onChange={this.handleChange.bind(this)} className="signup-input" type="text" id="bdate" name="birthDate" placeholder="13XX/XX/XX"/><br /><br />
+                        <label for="field">رشته</label><br /><br />
+                        <input onChange={this.handleChange.bind(this)} className="signup-input" type="text" id="field" name="field" /><br /><br />
+                        <label for="faculty">دانشکده</label><br /><br />
+                        <input onChange={this.handleChange.bind(this)} className="signup-input" type="text" id="faculty" name="faculty" /><br /><br />
+                        <label for="level">مقطع</label><br /><br />
+                        <input onChange={this.handleChange.bind(this)} className="signup-input" type="text" id="level" name="level" /><br /><br />
                         <label for="email">ایمیل</label><br /><br />
                         <input onChange={this.handleChange.bind(this)} className="signup-input" type="email" id="email" name="email" placeholder="example@mail.com" /><br /><br />
-                        <label for="pass">گذرواژه</label><br /><br />
-                        <input onChange={this.handleChange.bind(this)} className="signup-input" type="text" id="pass" name="pass" /><br /><br />
+                        <label for="password">گذرواژه</label><br /><br />
+                        <input onChange={this.handleChange.bind(this)} className="signup-input" type="text" id="password" name="password" /><br /><br />
                         <button onClick={this.submitForm.bind(this)} className="signup-green-button">ورود</button><br /><br />
                     </fieldset>
                 </div>
