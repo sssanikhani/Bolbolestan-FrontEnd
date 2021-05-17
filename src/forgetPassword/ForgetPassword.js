@@ -14,7 +14,7 @@ class ForgetPassword extends React.Component {
     }
 
     componentDidMount() {
-        document.title = 'ثبت نام';
+        document.title = 'ُفراموشی رمز عبور';
         this.setState({ loading: true });
         checkLogin()
             .then(res => {
@@ -26,27 +26,40 @@ class ForgetPassword extends React.Component {
     }
 
     submitForm() {
-        this.setState({ loading: true });
-        axios({
-            // TODO
-            method: 'post',
-            url: 'http://localhost:8080/student',
-            data: {
-                password: this.state.password
-            }
-        })
-            .then(res => {
-                window.location.href = '/';
+
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        var e_mail;
+        e_mail = document.getElementById("email").value;
+        if(!re.test(e_mail)){
+            RejectEmail = (
+                <React.Fragment>
+                  <span style={{color: 'red'}}> ایمیل وارد شده نامعتبر است! </span>
+                  <br/><br/>
+                </React.Fragment>
+              );
+        } else {
+            this.setState({ loading: true });
+            axios({
+                // TODO
+                method: 'post',
+                url: 'http://localhost:8080/student',
+                data: {
+                    password: this.state.password
+                }
             })
-            .catch(err => {
-                this.setState({
-                    err: err,
-                    loading: false
+                .then(res => {
+                    window.location.href = '/';
+                })
+                .catch(err => {
+                    this.setState({
+                        err: err,
+                        loading: false
+                    });
                 });
-            });
+        }
     }
 
-    handleChange({ target }) {
+    handleforget({ target }) {
         this.setState({
             [target.name]: target.value
         });
@@ -59,11 +72,10 @@ class ForgetPassword extends React.Component {
             <div className="cover-background">
                 <div className="forgetPassword-form">
                     <fieldset className="forgetPassword-fieldset">
-                        <legend className="forgetPassword-legend">ثبت نام</legend><br />
-                        <label for="password">گذرواژه</label><br /><br />
-                        <input onChange={this.handleChange.bind(this)} className="forgetPassword-input" type="text" id="password" name="password" /><br /><br />
-                        <label for="password">تکرار گذرواژه</label><br /><br />
-                        <input onChange={this.handleChange.bind(this)} className="forgetPassword-input" type="text" id="re-password" name="re-password" /><br /><br />
+                        <legend className="forgetPassword-legend">فراموشی رمزعبور</legend><br />
+                        {RejectEmail}
+                        <label for="email">ایمیل</label><br /><br />
+                        <input onforget={this.handleforget.bind(this)} className="forgetPassword-input" type="email" id="email" name="email" /><br /><br />
                         <button onClick={this.submitForm.bind(this)} className="forgetPassword-green-button">تایید</button><br /><br />
                     </fieldset>
                 </div>
