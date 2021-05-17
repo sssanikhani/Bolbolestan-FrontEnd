@@ -33,6 +33,29 @@ class SignUp extends React.Component {
     }
 
     submitForm() {
+
+
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        var e_mail, pass;
+        e_mail = document.getElementById("email").value;
+        pass = document.getElementById("password").value;
+        
+        if(!re.test(e_mail)){
+            Notife = (
+                <React.Fragment>
+                  <span style={{color: 'red'}}> ایمیل وارد شده نامعتبر است! </span>
+                  <br/><br/>
+                </React.Fragment>
+              );
+        }else if(length(pass)<6) {
+            Notife = (
+                <React.Fragment>
+                  <span style={{color: 'red'}}> رمز عبور نامعتبر است! </span>
+                  <br/><br/>
+                </React.Fragment>
+              );
+        } else {
+
         this.setState({ loading: true });
         axios({
             method: 'post',
@@ -57,6 +80,7 @@ class SignUp extends React.Component {
                     loading: false
                 });
             });
+        }
     }
 
     handleChange({ target }) {
@@ -73,6 +97,7 @@ class SignUp extends React.Component {
                 <div className="signup-form">
                     <fieldset className="signup-fieldset">
                         <legend className="signup-legend">ثبت نام</legend><br />
+                        {Notife}
                         <label for="fname">نام</label><br /><br />
                         <input onChange={this.handleChange.bind(this)} className="signup-input" type="text" id="fname" name="firstName" /><br /><br />
                         <label for="sname">نام خانوادگی</label><br /><br />
