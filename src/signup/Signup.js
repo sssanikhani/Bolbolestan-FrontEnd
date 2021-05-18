@@ -143,7 +143,7 @@ class SignUp extends React.Component {
         if(this.state.reqErr)
             errSec = (
                 <div className="signup-form-error">
-                    <b>{this.state.reqErr.data.short}</b>
+                    <b>ایمیل یا شماره دانشجویی موجود می باشد!</b>
                 </div>
             );
         if(this.state.err)
