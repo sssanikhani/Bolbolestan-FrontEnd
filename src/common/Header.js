@@ -9,17 +9,10 @@ import axios from 'axios';
 class Header extends React.Component {
 
   logout() {
-    axios({
-      method: 'POST',
-      url: 'http://localhost:8080/auth/logout',
-      data:{}
-    })
-      .then(res => {
-        window.location.href = '/login';
-      })
-      .catch(err => {
-        window.location.href = '/login';
-      })
+    let token = localStorage.getItem("token");
+    if (token !== null)
+      localStorage.removeItem("token");
+    window.location.href = '/login';
   }
 
   render() {
