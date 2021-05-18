@@ -5,12 +5,12 @@ import Spinner from '../common/Spinner';
 import checkLogin from '../common/checkLogin';
 
 import './signup-style.css';
+import { Link } from 'react-router-dom';
 
 class SignUp extends React.Component {
     state = {
         loading: true,
-        falseCredentials: false,
-        err: null,
+        reqErr: null,
         name: '',
         secondName: '',
         id: '',
@@ -20,7 +20,12 @@ class SignUp extends React.Component {
         level: '',
         email: '',
         password: '',
-        Notife: ''
+        confirm: '',
+        err: false,
+        emailErr: false,
+        idErr: false,
+        passErr: false,
+        confirmErr: false
     }
 
     componentDidMount() {
@@ -29,36 +34,24 @@ class SignUp extends React.Component {
         checkLogin()
             .then(res => {
                 if (res)
-                    window.location.href = '/';
+                    this.props.history.push('/');
                 else
                     this.setState({ loading: false });
             });
     }
 
-    submitForm() {
-        // const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        var e_mail, pass;
-        e_mail = document.getElementById("email").value;
-        pass = document.getElementById("password").value;
-        let Notife = <br/>;
-        if(!validator.isEmail(e_mail)){
-            Notife = (
-                <React.Fragment>
-                  <span style={{color: 'red'}}> ایمیل وارد شده نامعتبر است! </span>
-                  <br/><br/>
-                </React.Fragment>
-              );
-              this.setState({Notife: Notife})
-        }else if(pass.length <6) {
-            Notife = (
-                <React.Fragment>
-                  <span style={{color: 'red'}}> رمز عبور نامعتبر است! </span>
-                  <br/><br/>
-                </React.Fragment>
-              );
-              this.setState({Notife: Notife})
-
+    submitForm(event) {
+        event.preventDefault();
+        if (this.state.emailErr
+            || this.state.idErr
+            || this.state.passErr
+            || this.state.confirmErr
+        ) {
+            this.setState({ err: true });
+            return;
         } else {
+            this.setState({ err: false });
+        }
 
         this.setState({ loading: true });
         axios({
@@ -79,16 +72,61 @@ class SignUp extends React.Component {
             }
         })
             .then(res => {
-                console.log(res.data)
-                window.location.href = '/';
+                localStorage.setItem("token", res.data.access);
+                this.props.history.push('/');
             })
             .catch(err => {
-                this.setState({
-                    err: err,
-                    loading: false
-                });
+                if(err.response)
+                    this.setState({
+                        reqErr: err.response,
+                        loading: false
+                    });
             });
-        }
+    }
+
+    handleEmailChange({ target }) {
+        this.setState({
+            [target.name]: target.value
+        });
+        let email = target.value;
+        if (email.length > 0 && !validator.isEmail(email))
+            this.setState({ emailErr: true });
+        else
+            this.setState({ emailErr: false });
+    }
+
+    handleIdChange({ target }) {
+        this.setState({
+            [target.name]: target.value
+        });
+        let id = target.value;
+        if (id.length > 0 && isNaN(id))
+            this.setState({ idErr: true });
+        else
+            this.setState({ idErr: false });
+    }
+
+    handlePasswordChange({ target }) {
+        this.setState({
+            [target.name]: target.value
+        });
+        let password = target.value;
+        if (password.length > 0 && password.length < 6)
+            this.setState({ passErr: true });
+        else
+            this.setState({ passErr: false });
+    }
+
+    handleConfirmChange({ target }) {
+        this.setState({
+            [target.name]: target.value
+        });
+        let password = this.state.password;
+        let confirm = target.value;
+        if (confirm.length > 0 && password !== confirm)
+            this.setState({ confirmErr: true });
+        else
+            this.setState({ confirmErr: false });
     }
 
     handleChange({ target }) {
@@ -100,33 +138,93 @@ class SignUp extends React.Component {
     render() {
         if (this.state.loading)
             return <Spinner />;
+
+        let errSec = null;
+        if(this.state.reqErr)
+            errSec = (
+                <div className="signup-form-error">
+                    <b>{this.state.reqErr.data.short}</b>
+                </div>
+            );
+        if(this.state.err)
+            errSec = (
+                <div className="signup-form-error">* اطلاعات وارد شده صحیح نیست!</div>
+            );
+
+        let idErr = null;
+        let emailErr = null;
+        let passErr = null;
+        let confirmErr = null;
+        if (this.state.idErr)
+            idErr = (
+                <div className="input-error">* شماره دانشجویی باید به صورت عدد باشد!</div>
+            );
+        if (this.state.emailErr)
+            emailErr = (
+                <div className="input-error">* ایمیل نامعتبر است!</div>
+            );
+        if (this.state.passErr)
+            passErr = (
+                <div className="input-error">* رمز عبور خیلی کوتاه است!</div>
+            );
+        if (this.state.confirmErr)
+            confirmErr = (
+                <div className="input-error">* تکرار رمز عبور با رمز عبور مطابقت ندارد!</div>
+            );
         return (
             <div className="cover-background">
-                <div className="signup-form">
+                <form onSubmit={this.submitForm.bind(this)} className="signup-form">
                     <fieldset className="signup-fieldset">
-                        <legend className="signup-legend">ثبت نام</legend><br />
-                        {this.state.Notife}
-                        <label for="fname">نام</label><br />
-                        <input onChange={this.handleChange.bind(this)} className="signup-input" type="text" id="name" name="name" /><br />
-                        <label for="sname">نام خانوادگی</label><br />
-                        <input onChange={this.handleChange.bind(this)} className="signup-input" type="text" id="secondName" name="secondName" /><br />
-                        <label for="id">شماره دانشجویی</label><br />
-                        <input onChange={this.handleChange.bind(this)} className="signup-input" type="text" id="id" name="id" /><br />
-                        <label for="bdate">تاریخ تولد</label><br />
-                        <input onChange={this.handleChange.bind(this)} className="signup-input" type="text" id="birthDate" name="birthDate" placeholder="13XX/XX/XX"/><br />
-                        <label for="field">رشته</label><br />
-                        <input onChange={this.handleChange.bind(this)} className="signup-input" type="text" id="field" name="field" /><br />
-                        <label for="faculty">دانشکده</label><br />
-                        <input onChange={this.handleChange.bind(this)} className="signup-input" type="text" id="faculty" name="faculty" /><br />
-                        <label for="level">مقطع</label><br />
-                        <input onChange={this.handleChange.bind(this)} className="signup-input" type="text" id="level" name="level" /><br />
-                        <label for="email">ایمیل</label><br />
-                        <input onChange={this.handleChange.bind(this)} className="signup-input" type="email" id="email" name="email" placeholder="example@mail.com" /><br />
-                        <label for="password">گذرواژه</label><br />
-                        <input onChange={this.handleChange.bind(this)} className="signup-input" type="text" id="password" name="password" /><br /><br />
-                        <button onClick={this.submitForm.bind(this)} className="signup-green-button">ورود</button><br />
+                        <legend className="signup-legend">ثبت نام</legend>
+                        {errSec}
+                        <div className="input-container">
+                            <label className="signup-lable" for="fname">نام</label>
+                            <input onChange={this.handleChange.bind(this)} className="signup-input" type="text" id="name" name="name" />
+                        </div>
+                        <div className="input-container">
+                            <label className="signup-lable" for="sname">نام خانوادگی</label>
+                            <input onChange={this.handleChange.bind(this)} className="signup-input" type="text" id="secondName" name="secondName" />
+                        </div>
+                        {idErr}
+                        <div className="input-container">
+                            <label className="signup-lable" for="id">شماره دانشجویی</label>
+                            <input dir='ltr' onChange={this.handleIdChange.bind(this)} className="signup-input" type="text" id="id" name="id" />
+                        </div>
+                        <div className="input-container">
+                            <label className="signup-lable" for="bdate">تاریخ تولد</label>
+                            <input dir='ltr' onChange={this.handleChange.bind(this)} className="signup-input" type="text" id="birthDate" name="birthDate" placeholder="13XX/XX/XX" />
+                        </div>
+                        <div className="input-container">
+                            <label className="signup-lable" for="field">رشته</label>
+                            <input onChange={this.handleChange.bind(this)} className="signup-input" type="text" id="field" name="field" />
+                        </div>
+                        <div className="input-container">
+                            <label className="signup-lable" for="faculty">دانشکده</label>
+                            <input onChange={this.handleChange.bind(this)} className="signup-input" type="text" id="faculty" name="faculty" />
+                        </div>
+                        <div className="input-container">
+                            <label className="signup-lable" for="level">مقطع</label>
+                            <input onChange={this.handleChange.bind(this)} className="signup-input" type="text" id="level" name="level" />
+                        </div>
+                        {emailErr}
+                        <div className="input-container">
+                            <label className="signup-lable" for="email">ایمیل</label>
+                            <input dir='ltr' onChange={this.handleEmailChange.bind(this)} className="signup-input" type="email" id="email" name="email" placeholder="example@mail.com" />
+                        </div>
+                        {passErr}
+                        <div className="input-container">
+                            <label className="signup-lable" for="password">گذرواژه</label>
+                            <input dir='ltr' onChange={this.handlePasswordChange.bind(this)} className="signup-input" type="password" id="password" name="password" />
+                        </div>
+                        {confirmErr}
+                        <div className="input-container">
+                            <label className="signup-lable" for="confirm">تکرار گذرواژه</label>
+                            <input dir='ltr' onChange={this.handleConfirmChange.bind(this)} className="signup-input" type="password" id="confirm" name="confirm" />
+                        </div>
+                        <input className="signup-green-button" type="submit" value="ثبت نام" /><br /><br />
+                        <Link to="/login">ورود</Link>
                     </fieldset>
-                </div>
+                </form>
             </div>
         );
     }
