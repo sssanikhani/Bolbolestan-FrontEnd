@@ -11,6 +11,7 @@ import Home from './home/Home';
 import Courses from './courses/Courses';
 import SignUp from './signup/Signup';
 import ForgetPassword from './forgetPassword/ForgetPassword';
+import ChangePassword from './forgetPassword/ChangePassword';
 
 
 
@@ -29,8 +30,8 @@ class App extends React.Component {
           <Route exact path="/courses" component={Courses} />
           <Route exact path="/plan" component={Plan} />
           <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/forgetpassword" component={ForgetPassword} />
-
+          <Route exact path="/forget-password" component={ForgetPassword} />
+          <Route exact path="/change-password" component={ChangePassword} />
           <Route component={NotFound} />
         </Switch>
       </Router>
