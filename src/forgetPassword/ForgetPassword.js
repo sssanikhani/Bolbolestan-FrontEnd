@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import validator from 'validator';
 
 import Spinner from '../common/Spinner';
 import checkLogin from '../common/checkLogin';
@@ -10,7 +11,8 @@ class ForgetPassword extends React.Component {
     state = {
         loading: true,
         err: null,
-        password: ''
+        email: '',
+        Notife: ''
     }
 
     componentDidMount() {
@@ -27,24 +29,27 @@ class ForgetPassword extends React.Component {
 
     submitForm() {
 
-        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        // const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         var e_mail;
         e_mail = document.getElementById("email").value;
-        if(!re.test(e_mail)){
-            RejectEmail = (
+        let Notife = <br/>;
+
+        if(!validator.isEmail(e_mail)){
+            Notife = (
                 <React.Fragment>
                   <span style={{color: 'red'}}> ایمیل وارد شده نامعتبر است! </span>
                   <br/><br/>
                 </React.Fragment>
               );
+              this.setState({Notife: Notife})
         } else {
             this.setState({ loading: true });
             axios({
                 // TODO
                 method: 'post',
-                url: 'http://localhost:8080/student',
+                url: 'http://localhost:8080/auth/forget-password',
                 data: {
-                    password: this.state.password
+                    email: this.state.email
                 }
             })
                 .then(res => {
@@ -73,7 +78,8 @@ class ForgetPassword extends React.Component {
                 <div className="forgetPassword-form">
                     <fieldset className="forgetPassword-fieldset">
                         <legend className="forgetPassword-legend">فراموشی رمزعبور</legend><br />
-                        {RejectEmail}
+                        {this.state.Notife}
+                        <p >ایمیل خود را وارد کنید</p>
                         <label for="email">ایمیل</label><br /><br />
                         <input onforget={this.handleforget.bind(this)} className="forgetPassword-input" type="email" id="email" name="email" /><br /><br />
                         <button onClick={this.submitForm.bind(this)} className="forgetPassword-green-button">تایید</button><br /><br />

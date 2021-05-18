@@ -10,7 +10,10 @@ class ChangePassword extends React.Component {
     state = {
         loading: true,
         err: null,
-        password: ''
+        password: '',
+        re_password: '',
+        Notife: ''
+
     }
 
     componentDidMount() {
@@ -30,26 +33,32 @@ class ChangePassword extends React.Component {
         var pass, re_pass;
         pass = document.getElementById("password").value;
         re_pass = document.getElementById("re_password").value;
+        let Notife = <br/>;
+
         if(length(pass) < 6) {
-            falsePass = (
+            Notife = (
                 <React.Fragment>
                   <span style={{color: 'red'}}> رمز عبور نامعتبر است! </span>
                   <br/><br/>
                 </React.Fragment>
               );
+              this.setState({Notife: Notife})
+
         } else if(pass != re_pass){
-            falsePass = (
+            Notife = (
                 <React.Fragment>
                   <span style={{color: 'red'}}> رمز عبور و تکرار آن همخوانی ندارد! </span>
                   <br/><br/>
                 </React.Fragment>
               );
+              this.setState({Notife: Notife})
+
         } else {
         this.setState({ loading: true });
         axios({
             // TODO
             method: 'post',
-            url: 'http://localhost:8080/student',
+            url: 'http://localhost:8080/auth/change-password',
             data: {
                 password: this.state.password
             }
@@ -80,11 +89,11 @@ class ChangePassword extends React.Component {
                 <div className="changePassword-form">
                     <fieldset className="changePassword-fieldset">
                         <legend className="changePassword-legend">تغییرگذرواژه</legend><br />
-                        {falsePass}
+                        {this.state.Notife}
                         <label for="password">گذرواژه</label><br /><br />
                         <input onChange={this.handleChange.bind(this)} className="changePassword-input" type="text" id="password" name="password" /><br /><br />
                         <label for="password">تکرار گذرواژه</label><br /><br />
-                        <input onChange={this.handleChange.bind(this)} className="changePassword-input" type="text" id="re-password" name="re-password" /><br /><br />
+                        <input onChange={this.handleChange.bind(this)} className="changePassword-input" type="text" id="re_password" name="re_password" /><br /><br />
                         <button onClick={this.submitForm.bind(this)} className="changePassword-green-button">تایید</button><br /><br />
                     </fieldset>
                 </div>
