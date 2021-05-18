@@ -35,7 +35,7 @@ class ChangePassword extends React.Component {
         re_pass = document.getElementById("re_password").value;
         let Notife = <br/>;
 
-        if(length(pass) < 6) {
+        if(pass.length < 6) {
             Notife = (
                 <React.Fragment>
                   <span style={{color: 'red'}}> رمز عبور نامعتبر است! </span>
@@ -44,7 +44,7 @@ class ChangePassword extends React.Component {
               );
               this.setState({Notife: Notife})
 
-        } else if(pass != re_pass){
+        } else if(pass !== re_pass){
             Notife = (
                 <React.Fragment>
                   <span style={{color: 'red'}}> رمز عبور و تکرار آن همخوانی ندارد! </span>
