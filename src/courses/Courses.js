@@ -12,6 +12,7 @@ import REFRESH from '../static/SRC/reset.png';
 import ADD from '../static/SRC/add.png';
 import ENTEZAR from '../static/SRC/entezar.png';
 import Footer from '../common/Footer';
+import authHeader from '../common/authHeader';
 
 class Courses extends React.Component {
     constructor(props) {
@@ -81,7 +82,11 @@ class SelectedCourses extends React.Component {
 
     componentDidMount() {
         this.setState({ loading: true });
-        axios.get('http://localhost:8080/student/offerings')
+        axios.get('http://localhost:8080/student/offerings', {
+            headers: {
+                'Authorization': authHeader()
+            }
+        })
             .then(response => {
                 this.setState({
                     data: response.data,
@@ -105,6 +110,9 @@ class SelectedCourses extends React.Component {
         axios({
             method: 'post',
             url: 'http://localhost:8080/student/offerings/' + sel,
+            headers: {
+                'Authorization': authHeader()
+            }
         })
             .then(response => {
                 window.location.reload();
@@ -124,6 +132,9 @@ class SelectedCourses extends React.Component {
         axios({
             method: 'delete',
             url: 'http://localhost:8080/student/offerings',
+            headers: {
+                'Authorization': authHeader()
+            },
             data: {
                 code: code,
                 classCode: classCode
@@ -237,7 +248,11 @@ class AllCourses extends React.Component {
 
     componentDidMount() {
         this.setState({ loading: true })
-        axios.get('http://localhost:8080/offerings')
+        axios.get('http://localhost:8080/offerings', {
+            headers: {
+                'Authorization': authHeader()
+            }
+        })
             .then(response => {
                 this.setState({
                     data: response.data,
@@ -261,7 +276,11 @@ class AllCourses extends React.Component {
     searchRequest(event) {
         event.preventDefault();
         this.setState({ loading: true });
-        axios.get('http://localhost:8080/offerings/search?q=' + this.state.searchBox)
+        axios.get('http://localhost:8080/offerings/search?q=' + this.state.searchBox, {
+            headers: {
+                'Authorization': authHeader()
+            }
+        })
             .then(response => {
                 this.setState({
                     data: response.data,
@@ -380,6 +399,9 @@ class CourseRow extends React.Component {
         axios({
             method: 'post',
             url: 'http://localhost:8080/student/offerings',
+            headers: {
+                'Authorization': authHeader()
+            },
             data: {
                 code: code,
                 classCode: classCode
