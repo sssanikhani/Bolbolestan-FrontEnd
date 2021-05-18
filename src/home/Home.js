@@ -7,6 +7,7 @@ import checkLogin from '../common/checkLogin';
 import Header from '../common/Header';
 import Footer from '../common/Footer';
 import Spinner from '../common/Spinner';
+import authHeader from '../common/authHeader';
 
 class Home extends React.Component {
     constructor(props) {
@@ -71,7 +72,11 @@ class Information extends React.Component {
 
     componentDidMount() {
         this.setState({ loading: true });
-        axios.get('http://localhost:8080/student')
+        axios.get('http://localhost:8080/student', {
+            headers: {
+                'Authorization': authHeader()
+            }
+        })
             .then(res => {
                 this.setState({ data: res.data });
                 this.setState({ loading: false });
@@ -150,7 +155,11 @@ class AllReportCards extends React.Component {
 
     componentDidMount() {
         this.setState({ loading: true });
-        axios.get('http://localhost:8080/student/report-card')
+        axios.get('http://localhost:8080/student/report-card', {
+            headers: {
+                'Authorization': authHeader()
+            }
+        })
             .then(response => {
                 this.setState({ data: this.sortReportCards(response.data) });
                 this.setState({ loading: false });
