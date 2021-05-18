@@ -82,7 +82,8 @@ class Login extends Component {
               <input dir="ltr" onChange={this.handleChange.bind(this)} className="login-input" type="password" id="pass" name="pass" /><br /><br />
               <input className="login-button" type="submit" value="ورود" /><br /><br />
             </form>
-            <Link to="/signup">ثبت نام</Link>
+            <Link to="/signup">ثبت نام</Link> <br/><br/>
+            <Link style={{color: "red"}} to="/forget-password">فراموشی رمز عبور</Link>
           </fieldset>
         </div>
         <Footer />
