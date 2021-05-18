@@ -6,6 +6,7 @@ import Spinner from '../common/Spinner';
 import checkLogin from '../common/checkLogin';
 
 import './forgetPassword-style.css';
+import { Link } from 'react-router-dom';
 
 class ForgetPassword extends React.Component {
     state = {
@@ -80,6 +81,7 @@ class ForgetPassword extends React.Component {
                         <fieldset className="forgetPassword-fieldset">
                             <legend className="forgetPassword-legend">فراموشی رمزعبور</legend><br />
                             <div className="done-message"><h3>*ایمیل حاوی لینک فراموشی رمز ارسال شد*</h3></div>
+                            <Link to="/login">بازگشت به صفحه ورود</Link>
                         </fieldset>
                     </div>
                 </div>
