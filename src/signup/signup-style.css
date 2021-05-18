@@ -3,17 +3,20 @@
 }
 
 .signup-form {
-  width: 80%;
+  width: 100%;
+  height: 90%;
   text-align: center;
   font-size: 18px;
 }
 
 .signup-fieldset {
   margin: auto;
-  width: 50%;
+  width: 70%;
+  height: 100%;
   border: 2px solid #428ce7;
   border-radius: 50px;
   background-color: white;
+  align-content: center;
 }
 
 .signup-legend {
@@ -27,17 +30,44 @@
   border-radius: 20px;
   border: 2px solid #428ce7;
   width: 80%;
-  height: 30px;
+  height: 95%;
   text-align: center;
 }
+
+.signup-lable {
+  width: fit-content;
+  font-size: small;
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  width: 90%;
+  height: 6%;
+  margin-top: 0.5%;
+  margin-right: 5%;
+}
+
+.input-error {
+  color: red;
+  font-size: small;
+}
+
+.signup-form-error {
+  color: red;
+}
+
 .signup-green-button {
   border-radius: 50px;
   background-color: #428ce7;
   border: 2px solid #428ce7;
   width: 150px;
   height: 40px;
-  padding-left: 10%;
-  padding-right: 10%;
   color: white;
   font-size: large;
+  margin-top: 1%;
 }
