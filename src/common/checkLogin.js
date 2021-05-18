@@ -1,4 +1,5 @@
 import axios from 'axios';
+import authHeader from './authHeader';
 
 async function checkLogin() {    
     let isLoggedIn = false;
@@ -8,7 +9,7 @@ async function checkLogin() {
     try {
         let response = await axios.get('http://localhost:8080/student', {
             headers: {
-                'Authorization': 'Bearer ' + token
+                'Authorization': authHeader()
             }
         });
         if (response.status === 200) {
