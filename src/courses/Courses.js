@@ -205,7 +205,7 @@ class SelectedCourses extends React.Component {
                         </table>
                     </div>
                     <hr />
-                    <div className="chosen.chosenCourses-bottom">
+                    <div className="chosenCourses-bottom">
                         <div className="chosenCourse-bottom-right-div">
                             <p>تعداد واحد های ثبت شده: {this.state.data.chosenUnits}</p>
                         </div>
