@@ -12,7 +12,7 @@ class Login extends Component {
   state = {
     loading: true,
     falseCredentials: false,
-    stdid: '',
+    email: '',
     pass: ''
   };
 
@@ -22,15 +22,17 @@ class Login extends Component {
       method: 'post',
       url: 'http://localhost:8080/auth/login',
       data: {
-        id: this.state.stdid,
+        email: this.state.email,
         password: this.state.pass
       }
     })
       .then(response => {
+        console.log(response);
+        localStorage.setItem('token', response.data.access);
         this.props.history.push('/');
       })
       .catch(error => {
-        if (error.response.status === 401) {
+        if (error.response && error.response.status === 401) {
           this.setState({falseCredentials: true});
         }
       });
@@ -74,9 +76,9 @@ class Login extends Component {
             <form onSubmit={this.submitForm.bind(this)} >
               <legend className="login-legend">ورود به سامانه ی بلبلستان</legend><br/>
               {falseUserPass}
-              <label for="std-id">نام کاربری(شماره دانشجویی)</label><br/>
-              <input dir="ltr" onChange={this.handleChange.bind(this)} className="login-input" type="text" id="std-id" name="stdid" /><br /><br />
-              <label for="pass">گذرواژه</label><br/>
+              <label htmlFor="email">پست الکترونیکی (ایمیل)</label><br/>
+              <input dir="ltr" onChange={this.handleChange.bind(this)} className="login-input" type="text" id="email" name="email" /><br /><br />
+              <label htmlFor="pass">گذرواژه</label><br/>
               <input dir="ltr" onChange={this.handleChange.bind(this)} className="login-input" type="password" id="pass" name="pass" /><br /><br />
               <input className="login-button" type="submit" value="ورود" /><br /><br />
             </form>
