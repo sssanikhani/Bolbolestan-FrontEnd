@@ -27,7 +27,6 @@ class Login extends Component {
       }
     })
       .then(response => {
-        console.log(response);
         localStorage.setItem('token', response.data.access);
         this.props.history.push('/');
       })

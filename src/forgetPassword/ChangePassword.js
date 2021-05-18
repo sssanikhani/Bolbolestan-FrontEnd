@@ -95,7 +95,6 @@ class ChangePassword extends React.Component {
     }
 
     render() {
-        console.log(this.state.token);
         if (this.state.loading)
             return <Spinner />;
         let errSec = null;

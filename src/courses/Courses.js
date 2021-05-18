@@ -105,7 +105,6 @@ class SelectedCourses extends React.Component {
     }
 
     handle(sel) {
-        console.log(sel);
         this.setState({ loading: true });
         axios({
             method: 'post',
@@ -411,7 +410,6 @@ class CourseRow extends React.Component {
                 window.location.reload();
             })
             .catch(err => {
-                console.log(err.response.status);
                 if (err.response.status === 401)
                     window.location.href = '/login';
                 else {
