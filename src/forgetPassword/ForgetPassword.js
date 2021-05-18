@@ -10,13 +10,15 @@ import './forgetPassword-style.css';
 class ForgetPassword extends React.Component {
     state = {
         loading: true,
-        err: null,
+        reqErr: null,
         email: '',
-        Notife: ''
+        err: false,
+        emailErr: false,
+        done: false
     }
 
     componentDidMount() {
-        document.title = 'ُفراموشی رمز عبور';
+        document.title = 'فراموشی رمز عبور';
         this.setState({ loading: true });
         checkLogin()
             .then(res => {
@@ -27,64 +29,87 @@ class ForgetPassword extends React.Component {
             });
     }
 
-    submitForm() {
-
-        // const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        var e_mail;
-        e_mail = document.getElementById("email").value;
-        let Notife = <br/>;
-
-        if(!validator.isEmail(e_mail)){
-            Notife = (
-                <React.Fragment>
-                  <span style={{color: 'red'}}> ایمیل وارد شده نامعتبر است! </span>
-                  <br/><br/>
-                </React.Fragment>
-              );
-              this.setState({Notife: Notife})
+    submitForm(event) {
+        event.preventDefault();
+        if(this.state.emailErr || this.state.email.length === 0) {
+            this.setState({ err: true });
+            return;
         } else {
-            this.setState({ loading: true });
-            axios({
-                // TODO
-                method: 'post',
-                url: 'http://localhost:8080/auth/forget-password',
-                data: {
-                    email: this.state.email
-                }
+            this.setState({ err: false });
+        }
+
+        this.setState({ loading: true });
+        axios({
+            method: 'post',
+            url: 'http://localhost:8080/auth/forget-password',
+            data: {
+                email: this.state.email
+            }
+        })
+            .then(res => {
+                this.setState({ done: true, loading: false });
             })
-                .then(res => {
-                    window.location.href = '/';
-                })
-                .catch(err => {
+            .catch(err => {
+                if(err.response)
                     this.setState({
-                        err: err,
+                        reqErr: err.response,
                         loading: false
                     });
-                });
-        }
+            });
+
     }
 
-    handleforget({ target }) {
+    handleChange({ target }) {
         this.setState({
             [target.name]: target.value
         });
+        let email = target.value;
+        if(email.length > 0 && !validator.isEmail(email))
+            this.setState({ emailErr: true });
+        else
+            this.setState({ emailErr: false });
     }
 
     render() {
         if (this.state.loading)
             return <Spinner />;
+        if (this.state.done)
+            return (
+                <div className="cover-background">
+                    <div onSubmit={this.submitForm.bind(this)} className="forgetPassword-form">
+                        <fieldset className="forgetPassword-fieldset">
+                            <legend className="forgetPassword-legend">فراموشی رمزعبور</legend><br />
+                            <div className="done-message"><h3>*ایمیل حاوی لینک فراموشی رمز ارسال شد*</h3></div>
+                        </fieldset>
+                    </div>
+                </div>
+            );
+        let errSec = null;
+        if (this.state.reqErr)
+                errSec = (
+                    <div className="form-error">کاربری با این ایمیل یافت نشد!</div>
+                );
+        if (this.state.err)
+                errSec = (
+                    <div className="form-error">اطلاعات وارد شده صحیح نیست!</div>
+                );
+        let emailErr = null;
+        if (this.state.emailErr)
+                emailErr = (
+                    <div className="input-error">* ایمیل نامعتبر است!</div>
+                );
         return (
             <div className="cover-background">
-                <div className="forgetPassword-form">
+                <form onSubmit={this.submitForm.bind(this)} className="forgetPassword-form">
                     <fieldset className="forgetPassword-fieldset">
                         <legend className="forgetPassword-legend">فراموشی رمزعبور</legend><br />
-                        {this.state.Notife}
-                        <p >ایمیل خود را وارد کنید</p>
-                        <label for="email">ایمیل</label><br /><br />
-                        <input onforget={this.handleforget.bind(this)} className="forgetPassword-input" type="email" id="email" name="email" /><br /><br />
-                        <button onClick={this.submitForm.bind(this)} className="forgetPassword-green-button">تایید</button><br /><br />
+                        {errSec}
+                        <label for="email">ایمیل خود را وارد کنید</label><br /><br />
+                        {emailErr}
+                        <input dir="ltr" onChange={this.handleChange.bind(this)} className="forgetPassword-input" type="email" id="email" name="email" /><br /><br />
+                        <input className="forgetPassword-green-button" type="submit" value="ارسال ایمیل" /><br /><br />
                     </fieldset>
-                </div>
+                </form>
             </div>
         );
     }
