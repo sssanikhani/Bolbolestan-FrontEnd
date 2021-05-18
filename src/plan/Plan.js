@@ -9,6 +9,7 @@ import checkLogin from '../common/checkLogin';
 import Spinner from '../common/Spinner';
 import PlanRow from './PlanRow';
 import TableTemplate from './TableTemplate';
+import authHeader from '../common/authHeader';
 
 class Plan extends React.Component {
 
@@ -23,7 +24,11 @@ class Plan extends React.Component {
     }
 
     getPlan() {
-        axios.get('http://localhost:8080/student/plan')
+        axios.get('http://localhost:8080/student/plan', {
+            headers: {
+                'Authorization': authHeader()
+            }
+        })
             .then(
                 res => {
                     if (res.status === 200) {
