@@ -118,7 +118,7 @@ class SelectedCourses extends React.Component {
                 window.location.reload();
             })
             .catch(err => {
-                if (err.response.status === 401)
+                if (err.response && err.response.status === 401)
                     window.location.href = '/login';
                 else {
                     this.props.base.setState({ err: err.response.data });
