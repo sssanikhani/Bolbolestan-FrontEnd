@@ -5,7 +5,6 @@ import Spinner from '../common/Spinner';
 import checkLogin from '../common/checkLogin';
 
 import './changePassword-style.css';
-import authHeader from '../common/authHeader';
 import { Link } from 'react-router-dom';
 
 class ChangePassword extends React.Component {
