@@ -42,7 +42,7 @@ class ForgetPassword extends React.Component {
         this.setState({ loading: true });
         axios({
             method: 'post',
-            url: 'http://localhost:8080/auth/forget-password',
+            url: 'http://87.247.185.122:32138/auth/forget-password',
             data: {
                 email: this.state.email
             }

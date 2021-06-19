@@ -33,7 +33,7 @@ class Login extends Component {
 
         axios({
             method: 'post',
-            url: 'http://localhost:8080/auth/login',
+            url: 'http://87.247.185.122:32138/auth/login',
             data: {
                 email: this.state.email,
                 password: this.state.pass

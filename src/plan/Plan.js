@@ -24,7 +24,7 @@ class Plan extends React.Component {
     }
 
     getPlan() {
-        axios.get('http://localhost:8080/student/plan', {
+        axios.get('http://87.247.185.122:32138/student/plan', {
             headers: {
                 'Authorization': authHeader()
             }

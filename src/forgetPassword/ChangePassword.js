@@ -50,7 +50,7 @@ class ChangePassword extends React.Component {
         this.setState({ loading: true });
         axios({
             method: 'post',
-            url: 'http://localhost:8080/auth/change-password',
+            url: 'http://87.247.185.122:32138/auth/change-password',
             headers: {
                 'Authorization': 'Bearer ' + this.state.token
             },

@@ -82,7 +82,7 @@ class SelectedCourses extends React.Component {
 
     componentDidMount() {
         this.setState({ loading: true });
-        axios.get('http://localhost:8080/student/offerings', {
+        axios.get('http://87.247.185.122:32138/student/offerings', {
             headers: {
                 'Authorization': authHeader()
             }
@@ -108,7 +108,7 @@ class SelectedCourses extends React.Component {
         this.setState({ loading: true });
         axios({
             method: 'post',
-            url: 'http://localhost:8080/student/offerings/' + sel,
+            url: 'http://87.247.185.122:32138/student/offerings/' + sel,
             headers: {
                 'Authorization': authHeader()
             }
@@ -130,7 +130,7 @@ class SelectedCourses extends React.Component {
         this.setState({ loading: true });
         axios({
             method: 'delete',
-            url: 'http://localhost:8080/student/offerings',
+            url: 'http://87.247.185.122:32138/student/offerings',
             headers: {
                 'Authorization': authHeader()
             },
@@ -247,7 +247,7 @@ class AllCourses extends React.Component {
 
     componentDidMount() {
         this.setState({ loading: true })
-        axios.get('http://localhost:8080/offerings', {
+        axios.get('http://87.247.185.122:32138/offerings', {
             headers: {
                 'Authorization': authHeader()
             }
@@ -275,7 +275,7 @@ class AllCourses extends React.Component {
     searchRequest(event) {
         event.preventDefault();
         this.setState({ loading: true });
-        axios.get('http://localhost:8080/offerings/search?q=' + this.state.searchBox, {
+        axios.get('http://87.247.185.122:32138/offerings/search?q=' + this.state.searchBox, {
             headers: {
                 'Authorization': authHeader()
             }
@@ -300,7 +300,7 @@ class AllCourses extends React.Component {
         this.setState({
             [target.name]: target.value
         });
-        // axios.get('http://localhost:8080/offerings/search?q=' + this.state.searchBox)
+        // axios.get('http://87.247.185.122:32138/offerings/search?q=' + this.state.searchBox)
         //     .then(res => {
         //         this.setState({ data: res.data });
         //     })
@@ -397,7 +397,7 @@ class CourseRow extends React.Component {
     addCourse(code, classCode) {
         axios({
             method: 'post',
-            url: 'http://localhost:8080/student/offerings',
+            url: 'http://87.247.185.122:32138/student/offerings',
             headers: {
                 'Authorization': authHeader()
             },

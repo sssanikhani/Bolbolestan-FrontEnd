@@ -56,7 +56,7 @@ class SignUp extends React.Component {
         this.setState({ loading: true });
         axios({
             method: 'post',
-            url: 'http://localhost:8080/auth/signup',
+            url: 'http://87.247.185.122:32138/auth/signup',
             data: {
                 id: this.state.id,
                 email: this.state.email,

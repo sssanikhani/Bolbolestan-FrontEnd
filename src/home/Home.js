@@ -72,7 +72,7 @@ class Information extends React.Component {
 
     componentDidMount() {
         this.setState({ loading: true });
-        axios.get('http://localhost:8080/student', {
+        axios.get('http://87.247.185.122:32138/student', {
             headers: {
                 'Authorization': authHeader()
             }
@@ -155,7 +155,7 @@ class AllReportCards extends React.Component {
 
     componentDidMount() {
         this.setState({ loading: true });
-        axios.get('http://localhost:8080/student/report-card', {
+        axios.get('http://87.247.185.122:32138/student/report-card', {
             headers: {
                 'Authorization': authHeader()
             }

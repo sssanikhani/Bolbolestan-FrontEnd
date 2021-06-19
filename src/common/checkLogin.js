@@ -7,7 +7,7 @@ async function checkLogin() {
     if (token === null)
         return false;
     try {
-        let response = await axios.get('http://localhost:8080/student', {
+        let response = await axios.get('http://87.247.185.122:32138/student', {
             headers: {
                 'Authorization': authHeader()
             }
