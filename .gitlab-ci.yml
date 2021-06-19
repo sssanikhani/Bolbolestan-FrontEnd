@@ -24,4 +24,4 @@ build:
 deploy:
   stage: deploy
   script:
-  - http_proxy=$PROXY_SERVER https_proxy=$PROXY_SERVER kubectl --kubeconfig $KUBE_CONFIG set image deployment/frontend-deployment frontend=quay.io/sssanikhani/bolbolestan-frontend:$CI_BUILD_REF
+  - kubectl --kubeconfig $KUBE_CONFIG set image deployment/frontend-deployment frontend=quay.io/sssanikhani/bolbolestan-frontend:$CI_BUILD_REF
